@@ -1,3 +1,4 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "myprogjava"
+
+mainClassName = 'ru.pocket.catmain.myprog_java'
