@@ -6,12 +6,11 @@ public class MyFirstJar {
     hello("user");
     hello("Anna");
 
-    double len = 5;
-    System.out.println("Площадь квадрата со стороной"+ len + "=" + area(len));
+    Square s = new Square(5);
+    System.out.println("Площадь квадрата со стороной"+ s.l + "=" + s.area());
 
-    double a = 4;
-    double b = 8;
-    System.out.println("Площадь прямоугольника со сторонами"+ a +"и"+ b +"=" + area(a, b));
+    Rectangle f = new Rectangle(4, 8);
+    System.out.println("Площадь прямоугольника со сторонами"+ f.a +"и"+ f.b +"=" + f.area());
 
   }
 
@@ -19,14 +18,5 @@ public class MyFirstJar {
 
     System.out.println("Hello," + someword + "!");
   }
-
-  public static double area(double l) {
-    return l * l;
-
-  }
-  public static double area(double a, double b){
-    return a * b;
-  }
-
 
 }
