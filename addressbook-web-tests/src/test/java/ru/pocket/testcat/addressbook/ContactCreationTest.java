@@ -33,7 +33,7 @@ public class ContactCreationTest {
   @Test
   public void contactCreationTest() {
     addContactPage();
-    fillContactForm(new ContactData("Marina", "Verdy", "verdyanna", "person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", "1976");
+    fillContactForm(new ContactData("Marina", "Verdy", "verdyanna", "person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", "1976"));
     pressEnter();
     homePage();
   }
@@ -46,7 +46,7 @@ public class ContactCreationTest {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillContactForm(ContactData contactData ) {
+  public void fillContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
@@ -93,6 +93,7 @@ public class ContactCreationTest {
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
     wd.findElement(By.name("byear")).sendKeys(contactData.getYearbirth());
+
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[17]")).isSelected()) {
       wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[17]")).click();
     }
