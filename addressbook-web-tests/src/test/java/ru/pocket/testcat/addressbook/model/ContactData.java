@@ -1,4 +1,4 @@
-package ru.pocket.testcat.addressbook;
+package ru.pocket.testcat.addressbook.model;
 
 public class ContactData {
   private final String firstname;

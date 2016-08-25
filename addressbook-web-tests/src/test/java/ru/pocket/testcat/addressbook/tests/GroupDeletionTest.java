@@ -1,4 +1,4 @@
-package ru.pocket.testcat.addressbook;
+package ru.pocket.testcat.addressbook.tests;
 
 import org.testng.annotations.Test;
 

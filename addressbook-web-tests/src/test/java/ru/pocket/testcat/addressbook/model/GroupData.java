@@ -1,4 +1,4 @@
-package ru.pocket.testcat.addressbook;
+package ru.pocket.testcat.addressbook.model;
 
 public class GroupData {
   private final String groupname;
