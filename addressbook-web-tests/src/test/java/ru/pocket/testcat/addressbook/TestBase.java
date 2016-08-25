@@ -31,7 +31,7 @@ public class TestBase {
     login("admin", "secret");
   }
 
-  public void login(String username, String pass) {
+  protected void login(String username, String pass) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
@@ -41,15 +41,15 @@ public class TestBase {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  public void returnToGroupPage() {
+  protected void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
 
-  public void submitGroupCreation() {
+  protected void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
-  public void fillGroupForm(GroupData groupData) {
+  protected void fillGroupForm(GroupData groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupData.getGroupname());
@@ -61,11 +61,11 @@ public class TestBase {
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getGroupfooter());
   }
 
-  public void newGroupCreation() {
+  protected void newGroupCreation() {
     wd.findElement(By.name("new")).click();
   }
 
-  public void gotoGroupPage() {
+  protected void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
@@ -74,11 +74,11 @@ public class TestBase {
     wd.quit();
   }
 
-  public void deleteSelectedGroups() {
+  protected void deleteSelectedGroups() {
       wd.findElement(By.name("delete")).click();
   }
 
-  public void selectGroup() {
+  protected void selectGroup() {
       wd.findElement(By.name("selected[]")).click();
   }
 }
