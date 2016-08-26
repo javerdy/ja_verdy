@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Goblik on 26.08.2016.
  */
-public class ApplicationManadger {
+public class ApplicationManadger extends ContactHelper{
   FirefoxDriver wd;
 
   private SessionHelper sessionHelper;
