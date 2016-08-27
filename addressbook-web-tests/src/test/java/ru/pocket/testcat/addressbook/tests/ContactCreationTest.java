@@ -82,31 +82,17 @@ public class ContactCreationTest {
     wd.findElement(By.name("homepage")).click();
     wd.findElement(By.name("homepage")).clear();
     wd.findElement(By.name("homepage")).sendKeys(contactData.getHomepage());
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[21]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[21]")).click();
-    }
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[20]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[20]")).click();
-    }
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[5]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[5]")).click();
-    }
+    wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[16]")).click();
+    wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[12]")).click();
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
-    wd.findElement(By.name("byear")).sendKeys(contactData.getYearbirth());
-
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[17]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[17]")).click();
-    }
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[13]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[13]")).click();
-    }
+    wd.findElement(By.name("byear")).sendKeys("2005");
+    wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[12]")).click();
+    wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[9]")).click();
     wd.findElement(By.name("ayear")).click();
     wd.findElement(By.name("ayear")).clear();
-    wd.findElement(By.name("ayear")).sendKeys("2005");
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).click();
-    }
+    wd.findElement(By.name("ayear")).sendKeys("1995");
+    wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[8]")).click();
     wd.findElement(By.name("address2")).click();
     wd.findElement(By.name("address2")).clear();
     wd.findElement(By.name("address2")).sendKeys(contactData.getAddress2());
