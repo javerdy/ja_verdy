@@ -57,6 +57,8 @@ public class ContactCreationTest {
     wd.findElement(By.name("nickname")).click();
     wd.findElement(By.name("nickname")).clear();
     wd.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
+    WebElement sel = wd.findElement(By.name("photo"));
+    sel.sendKeys("c:\\Tools\\test.txt");
     wd.findElement(By.name("title")).click();
     wd.findElement(By.name("title")).clear();
     wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
