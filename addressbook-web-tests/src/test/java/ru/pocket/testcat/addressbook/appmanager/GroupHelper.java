@@ -7,7 +7,7 @@ import ru.pocket.testcat.addressbook.model.GroupData;
 /**
  * Created by Goblik on 26.08.2016.
  */
-public class GroupHelper extends HelperBase{
+public class GroupHelper extends BaseHelper {
 
 
   public GroupHelper(FirefoxDriver wd) {

@@ -15,8 +15,9 @@ public class ContactData {
   private final String address2;
   private final String notes;
   private final String yearbirth;
+  private final String anniver;
 
-  public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth) {
+  public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.nickname = nickname;
@@ -31,6 +32,7 @@ public class ContactData {
     this.address2 = address2;
     this.notes = notes;
     this.yearbirth = yearbirth;
+    this.anniver = anniver;
   }
 
   public String getFirstname() {
@@ -87,7 +89,9 @@ public class ContactData {
   public String getYearbirth() {
     return yearbirth;
   }
-
+  public String getAnniver() {
+    return anniver;
+  }
 
 
 }
