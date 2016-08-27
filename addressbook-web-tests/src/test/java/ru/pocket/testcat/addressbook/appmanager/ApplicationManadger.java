@@ -7,13 +7,14 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Goblik on 26.08.2016.
  */
-public class ApplicationManadger extends ContactHelper{
+public class ApplicationManadger {
   FirefoxDriver wd;
+
 
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper ;
-
+  private GroupHelper groupHelper;
+  private ContactHelper contactHelper;
 
 
   public void init() {
@@ -23,9 +24,9 @@ public class ApplicationManadger extends ContactHelper{
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
+    contactHelper = new ContactHelper(wd);
     sessionHelper.login("admin", "secret");
   }
-
 
 
   public void stop() {
@@ -42,5 +43,9 @@ public class ApplicationManadger extends ContactHelper{
 
   public void gotoGroupPage() {
     navigationHelper.gotoGroupPage();
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
