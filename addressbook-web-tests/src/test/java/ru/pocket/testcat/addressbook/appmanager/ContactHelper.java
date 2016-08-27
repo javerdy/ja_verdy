@@ -7,11 +7,11 @@ import ru.pocket.testcat.addressbook.model.ContactData;
 /**
  * Created by Goblik on 27.08.2016.
  */
-public class ContactHelper {
- private FirefoxDriver wd;
+public class ContactHelper extends HelperBase {
+
 
   public ContactHelper(FirefoxDriver wd){
-    this.wd = wd;
+    super (wd);
   }
 
   public void homePage() {
