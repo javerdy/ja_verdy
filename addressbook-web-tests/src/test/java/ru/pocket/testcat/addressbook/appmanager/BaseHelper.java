@@ -3,6 +3,7 @@ package ru.pocket.testcat.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by Goblik on 26.08.2016.
@@ -23,6 +24,7 @@ public class BaseHelper {
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
   }
+
 
   public boolean isAlertPresent() {
     try {
