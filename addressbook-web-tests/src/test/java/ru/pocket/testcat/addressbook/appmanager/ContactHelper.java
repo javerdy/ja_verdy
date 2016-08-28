@@ -23,7 +23,7 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, String bmonth, String aday, String amonth, String newgroup) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
@@ -36,14 +36,14 @@ public class ContactHelper extends BaseHelper {
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
     type(By.name("homepage"), contactData.getHomepage());
-    dropdownsel(contactData);
+    dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
     //new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("September");
+    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(bmonth);
     type(By.name("byear"), contactData.getYearbirth());
-    new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
-    new Select(wd.findElement(By.name("amonth"))).selectByVisibleText("October");
+    new Select(wd.findElement(By.name("aday"))).selectByVisibleText(aday);
+    new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(amonth);
     type(By.name("ayear"), contactData.getAnniver());
-    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("newgroup2");
+    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(newgroup);
     type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
 
