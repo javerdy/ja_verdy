@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import ru.pocket.testcat.addressbook.model.ContactData;
 
 /**
  * Created by Goblik on 26.08.2016.
@@ -24,7 +25,9 @@ public class BaseHelper {
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
   }
-
+  public void dropdownsel(ContactData contactData) {
+    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
+  }
 
   public boolean isAlertPresent() {
     try {

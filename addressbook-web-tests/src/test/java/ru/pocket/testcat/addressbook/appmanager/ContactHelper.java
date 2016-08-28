@@ -36,7 +36,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
     type(By.name("homepage"), contactData.getHomepage());
-    dropdownsel();
+    dropdownsel(contactData);
+    //new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
     new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("September");
     type(By.name("byear"), contactData.getYearbirth());
     new Select(wd.findElement(By.name("aday"))).selectByVisibleText("5");
@@ -48,10 +49,8 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void dropdownsel(By locator) {
-    new Select(locator).selectByVisibleText("12");
-  }
-//wd.findElement(By.name("bday")
+
+
   public void addContactPage() {
 
     click(By.linkText("add new"));
