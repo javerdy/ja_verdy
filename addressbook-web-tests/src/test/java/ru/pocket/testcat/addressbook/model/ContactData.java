@@ -17,9 +17,13 @@ public class ContactData {
   private final String yearbirth;
   private final String anniver;
   private final String bday;
+  private final String bmonth;
+  private final String aday;
+  private final String amonth;
+  private final String newgroup;
 
 
-  public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday) {
+  public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday, String bmonth, String aday, String amonth, String newgroup) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.nickname = nickname;
@@ -36,6 +40,12 @@ public class ContactData {
     this.yearbirth = yearbirth;
     this.anniver = anniver;
     this.bday = bday;
+    this.bmonth = bmonth;
+    this.aday = aday;
+    this.amonth = amonth;
+    this.newgroup = newgroup;
+
+
   }
 
   public String getFirstname() {
@@ -89,14 +99,33 @@ public class ContactData {
   public String getNotes() {
     return notes;
   }
+
   public String getYearbirth() {
     return yearbirth;
   }
+
   public String getAnniver() {
     return anniver;
   }
+
   public String getBday() {
     return bday;
+  }
+
+  public String getBmonth() {
+    return bmonth;
+  }
+
+  public String getAday() {
+    return aday;
+  }
+
+  public String getAmonth() {
+    return amonth;
+  }
+
+  public String getNewgroup() {
+    return newgroup;
   }
 
 }

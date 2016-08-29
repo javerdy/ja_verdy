@@ -2,7 +2,6 @@ package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 import ru.pocket.testcat.addressbook.model.ContactData;
 
 /**
@@ -23,7 +22,7 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillContactForm(ContactData contactData, String bmonth, String aday, String amonth, String newgroup) {
+  public void fillContactForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
@@ -38,18 +37,16 @@ public class ContactHelper extends BaseHelper {
     type(By.name("homepage"), contactData.getHomepage());
     dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
     //new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(bmonth);
+    dropdownsel(wd.findElement(By.name("bmonth")), contactData.getBmonth());
     type(By.name("byear"), contactData.getYearbirth());
-    new Select(wd.findElement(By.name("aday"))).selectByVisibleText(aday);
-    new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(amonth);
+    dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
+    dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
     type(By.name("ayear"), contactData.getAnniver());
-    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(newgroup);
+    dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
     type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
 
   }
-
-
 
   public void addContactPage() {
 
