@@ -40,7 +40,8 @@ public class ContactHelper extends BaseHelper {
     dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
     dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
     type(By.name("ayear"), contactData.getAnniver());
-    dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+    //строчку с группами пришлось убрать, так как при изменении группы пропадает это поле
+    //dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
     type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
 
@@ -51,14 +52,14 @@ public class ContactHelper extends BaseHelper {
 
 
   public void editContact(){
-    wd.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
+    click(By.cssSelector("img[alt=\"Edit\"]"));
   }
   public void updateContact() {
-    wd.findElement(By.xpath("/div[4]/form[1]/input[22]")).click();
+    click(By.xpath(".//*[@id='content']/form[1]/input[22]"));
 
   }
   public void deleteContact (){
-    wd.findElement(By.xpath("//div/div[4]/form[2]/div")).click();
+    click(By.xpath("//div/div[4]/form[2]/div"));
 
   }
 
