@@ -41,10 +41,6 @@ public class ApplicationManadger {
     return navigationHelper;
   }
 
-  public void gotoGroupPage() {
-    navigationHelper.gotoGroupPage();
-  }
-
   public ContactHelper getContactHelper() {
     return contactHelper;
   }

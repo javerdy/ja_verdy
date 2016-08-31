@@ -1,6 +1,7 @@
 package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.pocket.testcat.addressbook.model.ContactData;
 
@@ -14,9 +15,6 @@ public class ContactHelper extends BaseHelper {
     super(wd);
   }
 
-  public void homePage() {
-    click(By.linkText("home"));
-  }
 
   public void pressEnter() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
@@ -47,9 +45,21 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNotes());
 
   }
-
-  public void addContactPage() {
-
-    click(By.linkText("add new"));
+  public void selectContact() {
+    click(By.name("selected[]"));
   }
+
+
+  public void editContact(){
+    wd.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
+  }
+  public void updateContact() {
+    wd.findElement(By.xpath("/div[4]/form[1]/input[22]")).click();
+
+  }
+  public void deleteContact (){
+    wd.findElement(By.xpath("//div/div[4]/form[2]/div")).click();
+
+  }
+
 }

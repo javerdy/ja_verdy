@@ -9,11 +9,11 @@ import ru.pocket.testcat.addressbook.model.GroupData;
 public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification(){
-    app.gotoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("newgroup2", "header1", "footer1"));
     app.getGroupHelper().submitGroupModification();
-    app.getGroupHelper().returnToGroupPage();
+    app.getNavigationHelper().returnToGroupPage();
   }
 }
