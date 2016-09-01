@@ -1,6 +1,7 @@
 package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.pocket.testcat.addressbook.model.GroupData;
 
@@ -10,7 +11,7 @@ import ru.pocket.testcat.addressbook.model.GroupData;
 public class GroupHelper extends BaseHelper {
 
 
-  public GroupHelper(FirefoxDriver wd) {
+  public GroupHelper(WebDriver wd) {
     super(wd);
   }
 

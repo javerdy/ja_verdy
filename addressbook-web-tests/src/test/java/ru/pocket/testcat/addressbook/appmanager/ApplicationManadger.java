@@ -1,6 +1,10 @@
 package ru.pocket.testcat.addressbook.appmanager;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,17 +12,31 @@ import java.util.concurrent.TimeUnit;
  * Created by Goblik on 26.08.2016.
  */
 public class ApplicationManadger {
-  FirefoxDriver wd;
+  WebDriver wd;
 
 
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private ContactHelper contactHelper;
+  private String browser;
+
+  public ApplicationManadger(String browser) {
+    this.browser = browser;
+  }
 
 
   public void init() {
-    wd = new FirefoxDriver();
+
+    if(browser == BrowserType.FIREFOX)
+    {
+      wd = new FirefoxDriver();
+    } else if (browser == BrowserType.CHROME){
+      wd = new ChromeDriver();
+    }else if (browser == BrowserType.IE) {
+      wd = new InternetExplorerDriver();
+
+    }
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook");
     groupHelper = new GroupHelper(wd);

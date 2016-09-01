@@ -1,6 +1,7 @@
 package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.pocket.testcat.addressbook.model.ContactData;
@@ -11,7 +12,7 @@ import ru.pocket.testcat.addressbook.model.ContactData;
 public class ContactHelper extends BaseHelper {
 
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
