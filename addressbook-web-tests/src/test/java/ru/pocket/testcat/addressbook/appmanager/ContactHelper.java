@@ -47,6 +47,16 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNotes());
 
   }
+
+  public void fillContCreationForm(ContactData contactData) {
+    fillContactForm(contactData);
+    dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+
+  }
+  public void fillContModifyForm(ContactData contactData) {
+    fillContactForm(contactData);
+  }
+
   public void selectContact() {
     click(By.name("selected[]"));
   }
