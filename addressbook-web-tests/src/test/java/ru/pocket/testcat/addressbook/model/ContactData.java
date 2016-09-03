@@ -44,9 +44,8 @@ public class ContactData {
     this.aday = aday;
     this.amonth = amonth;
     this.newgroup = newgroup;
-
-
   }
+
 
   public String getFirstname() {
     return firstname;

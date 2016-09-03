@@ -2,8 +2,8 @@ package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 
 /**
@@ -21,7 +21,8 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
+
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
@@ -41,35 +42,41 @@ public class ContactHelper extends BaseHelper {
     dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
     dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
     type(By.name("ayear"), contactData.getAnniver());
-    //строчку с группами пришлось убрать, так как при изменении группы пропадает это поле
-    //dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+    if (creation) {
+      dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
     type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
 
-  }
+ }
 
-  public void fillContCreationForm(ContactData contactData) {
+/*  public void fillContCreationForm(ContactData contactData) {
     fillContactForm(contactData);
     dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
 
-  }
-  public void fillContModifyForm(ContactData contactData) {
-    fillContactForm(contactData);
-  }
+  }*/
 
+  /* public void fillContModifyForm(ContactData contactData) {
+     fillContactForm(contactData);
+   }
+ */
   public void selectContact() {
     click(By.name("selected[]"));
   }
 
 
-  public void editContact(){
+  public void editContact() {
     click(By.cssSelector("img[alt=\"Edit\"]"));
   }
+
   public void updateContact() {
     click(By.xpath(".//*[@id='content']/form[1]/input[22]"));
 
   }
-  public void deleteContact (){
+
+  public void deleteContact() {
     click(By.xpath("//div/div[4]/form[2]/div"));
 
   }

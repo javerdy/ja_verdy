@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.NoSuchElementException;
 
 /**
  * Created by Goblik on 26.08.2016.
@@ -23,14 +24,19 @@ public class BaseHelper {
 
   public void type(By locator, String text) {
     click(locator);
-    if (text != null) {
-      String existingText = wd.findElement(locator).getAttribute("value");
-      if (! text.equals(existingText)) {
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-      }
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
+  }
+
+/*  click(locator);
+  if (text != null) {
+    String existingText = wd.findElement(locator).getAttribute("value");
+    if (! text.equals(existingText)) {
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
     }
   }
+}*/
 
   public void dropdownsel(WebElement locator, String choice) {
     new Select(locator).selectByVisibleText(choice);
@@ -42,6 +48,16 @@ public class BaseHelper {
       return true;
     } catch (NoAlertPresentException e) {
       return false;
+    }
+  }
+
+  protected boolean isElementPresent(By locators) {
+    try {
+      wd.findElement(locators);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+
     }
   }
 }
