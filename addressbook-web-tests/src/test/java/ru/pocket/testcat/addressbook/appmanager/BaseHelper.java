@@ -51,9 +51,9 @@ public class BaseHelper {
     }
   }
 
-  protected boolean isElementPresent(By locators) {
+  protected boolean isElementPresent(By locator) {
     try {
-      wd.findElement(locators);
+      wd.findElement(locator);
       return true;
     } catch (NoSuchElementException ex) {
       return false;

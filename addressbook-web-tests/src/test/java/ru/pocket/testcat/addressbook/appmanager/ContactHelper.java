@@ -42,13 +42,13 @@ public class ContactHelper extends BaseHelper {
     dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
     dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
     type(By.name("ayear"), contactData.getAnniver());
+    type(By.name("address2"), contactData.getAddress2());
+    type(By.name("notes"), contactData.getNotes());
     if (creation) {
       dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-    type(By.name("address2"), contactData.getAddress2());
-    type(By.name("notes"), contactData.getNotes());
 
  }
 
