@@ -35,6 +35,7 @@ public class NavigationHelper extends BaseHelper {
   }
 
   public void returnToGroupPage() {
+
     click(By.linkText("group page"));
   }
 }
