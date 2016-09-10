@@ -23,12 +23,12 @@ public class BaseHelper {
   }
 
   public void type(By locator, String text) {
-    click(locator);
+/*    click(locator);
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
-  }
+  }*/
 
-/*  click(locator);
+  click(locator);
   if (text != null) {
     String existingText = wd.findElement(locator).getAttribute("value");
     if (! text.equals(existingText)) {
@@ -36,7 +36,7 @@ public class BaseHelper {
       wd.findElement(locator).sendKeys(text);
     }
   }
-}*/
+}
 
   public void dropdownsel(WebElement locator, String choice) {
     new Select(locator).selectByVisibleText(choice);
