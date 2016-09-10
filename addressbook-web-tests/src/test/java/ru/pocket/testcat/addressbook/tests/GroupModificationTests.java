@@ -8,12 +8,12 @@ import ru.pocket.testcat.addressbook.model.GroupData;
  */
 public class GroupModificationTests extends TestBase {
   @Test
-  public void testGroupModification(){
+  public void testGroupModification() {
     app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereaGroup()){
+    if (!app.getGroupHelper().isThereaGroup()) {
       app.getGroupHelper().createGroup(new GroupData("newgroup", null, null));
     }
- //   app.getNavigationHelper().gotoGroupPage();
+
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("newgroup2", "header1", "footer1"));
