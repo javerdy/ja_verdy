@@ -28,14 +28,12 @@ public class NavigationHelper extends BaseHelper {
   }
 
   public void homePage() {
-    if (isElementPresent(By.id("maintable"))) {
-      return;
-    }
+
     click(By.linkText("home"));
   }
 
-  public void returnToGroupPage() {
+/*  public void returnToGroupPage() {
 
     click(By.linkText("group page"));
-  }
+  }*/
 }

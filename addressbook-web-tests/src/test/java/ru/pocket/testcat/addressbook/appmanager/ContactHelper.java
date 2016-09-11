@@ -18,7 +18,12 @@ public class ContactHelper extends BaseHelper {
 
 
   public void pressEnter() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    //click(By.cssSelector("#content>form>input"));
+    click(By.name("submit"));
+    //new Select(wd.findElement(By.name("submit"))).selectByVisibleText("Enter");
+    //click(By.xpath("//div[4]/form/input"));
+
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
@@ -50,11 +55,15 @@ public class ContactHelper extends BaseHelper {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
- }
+  }
 
-/*  public void fillContCreationForm(ContactData contactData) {
-    fillContactForm(contactData);
-    dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+/*
+  public void fillContCreationForm (ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNickname());
+
+    //dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
 
   }*/
 
@@ -81,4 +90,39 @@ public class ContactHelper extends BaseHelper {
 
   }
 
+  public void initContact() {
+    click(By.linkText("add new"));
+
+  }
+
+  public void goToHomePage() {
+/*    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }*/
+    click(By.linkText("home"));
+
+  }
+
+
+  public void createContact(ContactData contactdata, boolean cont) {
+    goToHomePage();
+    initContact();
+    //fillContCreationForm(contact);
+    fillContactForm(contactdata,true);
+    pressEnter();
+    goToHomePage();
+
+  }
+
+  public void fillContCreationForm(ContactData contactData) {
+
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNickname());
+
+  }
+
+  public boolean isThereaContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
