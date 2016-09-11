@@ -89,10 +89,11 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void createContact(ContactData contactdata) {
+    goToHomePage();
     initContact();
     fillContCreationForm(contactdata, true);
     pressEnter();
-    returnToGroupPage();
+    goToHomePage();
 
   }
 
@@ -125,8 +126,13 @@ public class ContactHelper extends BaseHelper {
   public boolean isThereaContact() {
     return isElementPresent(By.name("selected[]"));
   }
-  public void returnToGroupPage() {
 
-    click(By.linkText("group page"));
-}
+  public void returnToContactPage() {
+    click(By.linkText("home page"));
+
+  }
+
+  public void alertDel() {
+    wd.switchTo().alert().accept();
+  }
 }
