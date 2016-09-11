@@ -26,14 +26,8 @@ public class NavigationHelper extends BaseHelper {
 
     click(By.linkText("add new"));
   }
-
   public void homePage() {
 
     click(By.linkText("home"));
   }
-
-/*  public void returnToGroupPage() {
-
-    click(By.linkText("group page"));
-  }*/
 }

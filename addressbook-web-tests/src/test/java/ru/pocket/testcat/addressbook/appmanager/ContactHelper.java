@@ -17,11 +17,8 @@ public class ContactHelper extends BaseHelper {
 
 
   public void pressEnter() {
-    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    //click(By.cssSelector("#content>form>input"));
     click(By.name("submit"));
     //new Select(wd.findElement(By.name("submit"))).selectByVisibleText("Enter");
-    //click(By.xpath("//div[4]/form/input"));
 
   }
 
@@ -89,11 +86,10 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void createContact(ContactData contactdata) {
-    goToHomePage();
     initContact();
     fillContCreationForm(contactdata, true);
     pressEnter();
-    goToHomePage();
+    returnToContactPage();
 
   }
 
