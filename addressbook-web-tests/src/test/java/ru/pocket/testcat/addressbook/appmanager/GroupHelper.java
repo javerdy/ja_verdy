@@ -3,7 +3,6 @@ package ru.pocket.testcat.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.pocket.testcat.addressbook.model.GroupData;
 
 import java.util.ArrayList;
@@ -51,30 +50,37 @@ public class GroupHelper extends BaseHelper {
     click(By.name("update"));
   }
 
-  public void goToGroupList(){click(By.linkText("group page"));}
+  public void returnToGroupPage() {
+    click(By.linkText("group page"));
+  }
+
+  public void goToGroupPage() {
+    click(By.name("groups"));
+  }
 
 
   public void createGroup(GroupData group) {
+    goToGroupPage();
     newGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
-    goToGroupList();
+    returnToGroupPage();
   }
 
 
   public boolean isThereaGroup() {
-     return isElementPresent(By.name("selected[]"));
+    return isElementPresent(By.name("selected[]"));
 
-}
+  }
 
   public int getgroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
   public List<GroupData> getGroupList() {
-    List<GroupData> groups  = new ArrayList<GroupData>();
+    List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element: elements){
+    for (WebElement element : elements) {
       String name = element.getText();
       GroupData group = new GroupData(name, null, null);
       groups.add(group);

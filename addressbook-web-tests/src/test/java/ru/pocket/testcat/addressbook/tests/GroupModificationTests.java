@@ -24,11 +24,14 @@ public class GroupModificationTests extends TestBase {
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("newgroup2", "header1", "footer1"));
     app.getGroupHelper().submitGroupModification();
-    app.getGroupHelper().goToGroupList();
+    app.getGroupHelper().returnToGroupPage();
     //int after = app.getGroupHelper().getgroupCount ();
     List<GroupData> after = app.getGroupHelper().getGroupList();
 
-    Assert.assertEquals(after.size(), before.size());
+    Assert.assertEquals(after.size(), before.size()-1);
+
+
+    }
 
   }
-}
+
