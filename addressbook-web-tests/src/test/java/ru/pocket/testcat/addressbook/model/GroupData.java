@@ -4,7 +4,7 @@ public class GroupData {
   private final String groupname;
   private final String groupheader;
   private final String groupfooter;
-  private final String groupid;
+  private final int groupid;
 
   @Override
   public boolean equals(Object o) {
@@ -13,15 +13,15 @@ public class GroupData {
 
     GroupData groupData = (GroupData) o;
 
-    if (groupname != null ? !groupname.equals(groupData.groupname) : groupData.groupname != null) return false;
-    return groupheader != null ? groupheader.equals(groupData.groupheader) : groupData.groupheader == null;
+    if (groupid != groupData.groupid) return false;
+    return groupname != null ? groupname.equals(groupData.groupname) : groupData.groupname == null;
 
   }
 
   @Override
   public int hashCode() {
-    int result = groupname != null ? groupname.hashCode() : 0;
-    result = 31 * result + (groupheader != null ? groupheader.hashCode() : 0);
+    int result = groupid;
+    result = 31 * result + (groupname !=null ? groupname.hashCode() : 0 );
     return result;
   }
 
@@ -35,7 +35,7 @@ public class GroupData {
 
 
 
-  public GroupData(String groupname, String groupheader, String groupfooter, String groupid) {
+  public GroupData(String groupname, String groupheader, String groupfooter, int groupid) {
     this.groupname = groupname;
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
@@ -47,7 +47,7 @@ public class GroupData {
     this.groupname = groupname;
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
-    this.groupid = null;
+    this.groupid = 0;
 
   }
 
@@ -63,7 +63,7 @@ public class GroupData {
   public String getGroupfooter() {
     return groupfooter;
   }
-  public String getGroupid() {
+  public int getGroupid() {
     return groupid;
   }
 
