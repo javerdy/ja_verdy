@@ -55,7 +55,7 @@ public class GroupHelper extends BaseHelper {
   }
 
   public void goToGroupPage() {
-    click(By.name("groups"));
+    wd.get("http://localhost/addressbook/group.php");
   }
 
 
