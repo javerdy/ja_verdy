@@ -2,8 +2,12 @@ package ru.pocket.testcat.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Goblik on 27.08.2016.
@@ -129,6 +133,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void alertDel() {
+
     wd.switchTo().alert().accept();
   }
 
@@ -136,4 +141,16 @@ public class ContactHelper extends BaseHelper {
   public int getContactCount(){
     return wd.findElements(By.name("selected[]")).size();
 
-  }}
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> contelements = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[1]"));
+    for(WebElement element: contelements){
+    String name = element.getText();
+    ContactData contact = new ContactData(name,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+    contacts.add(contact);
+    }
+    return contacts;
+  }
+}
