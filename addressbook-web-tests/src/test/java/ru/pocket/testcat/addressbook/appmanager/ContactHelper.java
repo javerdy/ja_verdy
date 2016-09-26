@@ -131,4 +131,9 @@ public class ContactHelper extends BaseHelper {
   public void alertDel() {
     wd.switchTo().alert().accept();
   }
-}
+
+
+  public int getContactCount(){
+    return wd.findElements(By.name("selected[]")).size();
+
+  }}
