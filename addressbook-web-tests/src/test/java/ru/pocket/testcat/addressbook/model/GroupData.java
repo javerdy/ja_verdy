@@ -1,10 +1,16 @@
 package ru.pocket.testcat.addressbook.model;
 
 public class GroupData {
+  private int groupid;
   private final String groupname;
   private final String groupheader;
   private final String groupfooter;
-  private final int groupid;
+
+  public void setGroupid(int groupid) {
+    this.groupid = groupid;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -35,19 +41,21 @@ public class GroupData {
 
 
 
-  public GroupData(String groupname, String groupheader, String groupfooter, int groupid) {
+  public GroupData( int groupid, String groupname, String groupheader, String groupfooter) {
+    this.groupid = groupid;
     this.groupname = groupname;
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
-    this.groupid = groupid;
+
 
   }
 
   public GroupData(String groupname, String groupheader, String groupfooter) {
+    this.groupid = 0;
     this.groupname = groupname;
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
-    this.groupid = 0;
+
 
   }
 
