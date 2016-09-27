@@ -19,6 +19,9 @@ public class GroupCreationTest extends TestBase {
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size() , before.size()+1);
 
+    group.setGroupid(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupid(), o2.getGroupid())).get().getGroupid());
+    before.add(group);
+    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
 
 //первый метод
 /*    int max = 0;
@@ -40,9 +43,6 @@ public class GroupCreationTest extends TestBase {
       }
     };*/
 
-    group.setGroupid(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupid(), o2.getGroupid())).get().getGroupid());
-    before.add(group);
-    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
 
 
 /*    app.getNavigationHelper().gotoGroupPage();

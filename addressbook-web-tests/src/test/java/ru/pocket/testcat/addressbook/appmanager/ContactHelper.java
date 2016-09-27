@@ -122,6 +122,12 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNotes());
 
   }
+  public void fillContSmallForm(ContactData contactData) {
+
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNickname());
+  }
 
   public boolean isThereaContact() {
     return isElementPresent(By.name("selected[]"));
@@ -142,12 +148,20 @@ public class ContactHelper extends BaseHelper {
     return wd.findElements(By.name("selected[]")).size();
 
   }
+  public void createSmallContact(ContactData contactdata) {
+    initContact();
+    fillContSmallForm(contactdata);
+    pressEnter();
+    returnToContactPage();
+
+  }
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> contelements = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[1]"));
+    List<WebElement> contelements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[2]/td[1]"));
     for(WebElement element: contelements){
-    String name = element.getText();
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
     ContactData contact = new ContactData(name,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
     contacts.add(contact);
     }

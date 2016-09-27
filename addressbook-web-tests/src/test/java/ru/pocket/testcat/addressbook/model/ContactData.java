@@ -1,37 +1,10 @@
 package ru.pocket.testcat.addressbook.model;
 
 public class ContactData {
+  private int id;
   private final String firstname;
   private final String lastname;
   private final String nickname;
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = firstname != null ? firstname.hashCode() : 0;
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "lastname='" + lastname + '\'' +
-            ", firstname='" + firstname + '\'' +
-            '}';
-  }
-
   private final String title;
   private final String address;
   private final String homePhone;
@@ -50,8 +23,8 @@ public class ContactData {
   private final String amonth;
   private final String newgroup;
 
-
   public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday, String bmonth, String aday, String amonth, String newgroup) {
+    this.id = 0;
     this.firstname = firstname;
     this.lastname = lastname;
     this.nickname = nickname;
@@ -74,6 +47,37 @@ public class ContactData {
     this.newgroup = newgroup;
   }
 
+
+
+  public ContactData(int id,String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday, String bmonth, String aday, String amonth, String newgroup) {
+    this.id = id;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.nickname = nickname;
+    this.title = title;
+    this.address = address;
+    this.homePhone = homePhone;
+    this.mobile = mobile;
+    this.workPhone = workPhone;
+    this.fax = fax;
+    this.email = email;
+    this.homepage = homepage;
+    this.address2 = address2;
+    this.notes = notes;
+    this.yearbirth = yearbirth;
+    this.anniver = anniver;
+    this.bday = bday;
+    this.bmonth = bmonth;
+    this.aday = aday;
+    this.amonth = amonth;
+    this.newgroup = newgroup;
+  }
+
+
+
+  public int getId() {
+    return id;
+  }
 
   public String getFirstname() {
     return firstname;
@@ -155,4 +159,37 @@ public class ContactData {
     return newgroup;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", id='" + id + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 }
