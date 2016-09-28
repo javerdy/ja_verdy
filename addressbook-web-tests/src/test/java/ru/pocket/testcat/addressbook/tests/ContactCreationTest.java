@@ -16,7 +16,7 @@ public class ContactCreationTest extends TestBase {
     //app.getNavigationHelper().homePage();
     app.getNavigationHelper().addContactPage();
     List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData("Bear", "Smith", "Blabla",null,null,null, null, null, null,null,null,null,null,null,null,null,null,null,null,null);
+    ContactData contact = new ContactData("Smith", "Gregorii", null,null,null,null, null, null, null,null,null,null,null,null,null,null,null,null,null,null);
 
     //app.getContactHelper().fillContactForm(new ContactData("Jon", "Smith", "Blabla", "person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", "1995","2005","12", "September", "5", "October","newgroup2"),true);
     //app.getContactHelper().fillContCreationForm(new ContactData("Bear", "Smith", "Blabla","person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", null,null,null, null, null, null,null),true);

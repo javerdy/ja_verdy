@@ -17,14 +17,13 @@ public class ContactModifyTest extends TestBase {
   public void testContactModify() {
 
     app.getContactHelper().goToHomePage();
-
     if (!app.getContactHelper().isThereaContact()) {
-      app.getContactHelper().createContact(new ContactData("Bear", "Smith", "Blabla","person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", null,null,null, null, null, null,null));
+      app.getContactHelper().createContact(new ContactData("Gregorii","Smith",null,null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() -1);
     app.getContactHelper().editContact();
-    ContactData contact = new ContactData(before.get(before.size() -1).getId(),"Gregorii", "Smith", "Blabla",null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null);
+    ContactData contact = new ContactData(before.get(before.size() -1).getId(),"Gregorii", "Smith", null,null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null);
     //app.getContactHelper().fillContCreationForm(new ContactData("Gregorii", "Smith", "Blabla", "person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", null, null, null, null, null, null, null), true);
     app.getContactHelper().fillContSmallForm(contact);
     app.getContactHelper().updateContact();
