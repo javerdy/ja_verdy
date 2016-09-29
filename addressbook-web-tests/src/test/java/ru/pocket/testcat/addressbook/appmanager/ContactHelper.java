@@ -89,7 +89,7 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void createContact(ContactData contactdata) {
+  public void create(ContactData contactdata) {
     initContact();
     fillContCreationForm(contactdata, true);
     pressEnter();
@@ -154,8 +154,14 @@ public class ContactHelper extends BaseHelper {
     returnToContactPage();
 
   }
+  public void delete(int index) {
+    selectContact(index);
+    deleteContact();
+    returnToContactPage();
+    alertDel();
+  }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> contelements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[2]/td[1]"));
     for(WebElement element: contelements){
@@ -167,4 +173,6 @@ public class ContactHelper extends BaseHelper {
     }
     return contacts;
   }
+
+
 }

@@ -13,12 +13,13 @@ public class GroupData {
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
   }
-/*  public GroupData(String groupname, String groupheader, String groupfooter) {
+
+  public GroupData(String groupname, String groupheader, String groupfooter) {
     this.groupid = Integer.MAX_VALUE;
     this.groupname = groupname;
     this.groupheader = groupheader;
     this.groupfooter = groupfooter;
-  }*/
+  }
   public void setGroupid(int groupid) {
     this.groupid = groupid;
   }
@@ -47,16 +48,6 @@ public class GroupData {
   public int hashCode() {
     return groupname != null ? groupname.hashCode() : 0;
   }
-
-  public GroupData(String groupname, String groupheader, String groupfooter) {
-    this.groupid = Integer.MAX_VALUE;
-    this.groupname = groupname;
-    this.groupheader = groupheader;
-    this.groupfooter = groupfooter;
-
-
-  }
-
 
   public String getGroupname() {
     return groupname;
