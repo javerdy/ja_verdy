@@ -16,7 +16,7 @@ public class ContactModifyTest extends TestBase {
   public  void ensurePrecondCont(){
     app.contact().goToHomePage();
     if (app.contact().list().size()== 0) {
-      app.contact().create(new ContactData("Gregorii","Smith",null,null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null));
+      app.contact().create(new ContactData().withFirstname("test1").withLastname("test11"));
     }
   }
 
@@ -25,8 +25,8 @@ public class ContactModifyTest extends TestBase {
     List<ContactData> before = app.contact().list();
     app.contact().selectContact(before.size() -1);
     app.contact().editContact();
-    ContactData contact = new ContactData(before.get(before.size() -1).getId(),"Gregorii", "Smith", null,null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null);
-    //app.contact().fillContCreationForm(new ContactData("Gregorii", "Smith", "Blabla", "person", "Moscow, Zheleznodorozhnaya", "111111-11", "968546789", "44444444", "888888", "m.osipo.a@mail.ru", "www.yandex.ru", "Moscow2", "my notes", null, null, null, null, null, null, null), true);
+    ContactData contact = new ContactData()
+            .withId(before.get(before.size() -1).getId()).withFirstname("test1").withFirstname("test2");
     app.contact().fillContSmallForm(contact);
     app.contact().updateContact();
     List<ContactData> after = app.contact().list();

@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.pocket.testcat.addressbook.model.GroupData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -13,14 +14,16 @@ public class GroupCreationTest extends TestBase {
   public void testGroupCreation() {
     app.goTo().groupPage();
     List<GroupData> before = app.group().list();
-    GroupData group = new GroupData("test2", null,null);
+    GroupData group = new GroupData().withGroupname("test2");
     app.group().create(group);
     List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size() , before.size()+1);
 
-    group.setGroupid(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupid(), o2.getGroupid())).get().getGroupid());
     before.add(group);
-    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+    Comparator<? super GroupData> byId = (g1,g2)->Integer.compare(g1.getGroupid(), g2.getGroupid());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
 
 //первый метод
 /*    int max = 0;

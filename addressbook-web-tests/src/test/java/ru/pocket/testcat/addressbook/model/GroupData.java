@@ -1,27 +1,33 @@
 package ru.pocket.testcat.addressbook.model;
 
 public class GroupData {
-  private int groupid;
-  private final String groupname;
-  private final String groupheader;
-  private final String groupfooter;
+  private int groupid = Integer.MAX_VALUE;
+  private String groupname;
+  private String groupheader;
+  private String groupfooter;
 
-
-  public GroupData(int groupid, String groupname, String groupheader, String groupfooter) {
+  public GroupData withGroupid(int groupid) {
     this.groupid = groupid;
-    this.groupname = groupname;
-    this.groupheader = groupheader;
-    this.groupfooter = groupfooter;
+    return this;
   }
 
-  public GroupData(String groupname, String groupheader, String groupfooter) {
-    this.groupid = Integer.MAX_VALUE;
-    this.groupname = groupname;
+  public GroupData withGroupheader(String groupheader) {
     this.groupheader = groupheader;
-    this.groupfooter = groupfooter;
+    return this;
+
   }
-  public void setGroupid(int groupid) {
-    this.groupid = groupid;
+
+  public GroupData withGroupname(String groupname) {
+    this.groupname = groupname;
+    return this;
+
+  }
+
+  public GroupData withGroupfooter(String groupfooter) {
+
+    this.groupfooter = groupfooter;
+    return this;
+
   }
 
 

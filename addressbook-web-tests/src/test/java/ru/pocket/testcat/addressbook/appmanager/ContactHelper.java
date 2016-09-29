@@ -122,6 +122,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNotes());
 
   }
+
   public void fillContSmallForm(ContactData contactData) {
 
     type(By.name("firstname"), contactData.getFirstname());
@@ -143,10 +144,11 @@ public class ContactHelper extends BaseHelper {
   }
 
 
-  public int getContactCount(){
+  public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
 
   }
+
   public void createSmallContact(ContactData contactdata) {
     initContact();
     fillContSmallForm(contactdata);
@@ -154,6 +156,7 @@ public class ContactHelper extends BaseHelper {
     returnToContactPage();
 
   }
+
   public void delete(int index) {
     selectContact(index);
     deleteContact();
@@ -164,12 +167,11 @@ public class ContactHelper extends BaseHelper {
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> contelements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[2]/td[1]"));
-    for(WebElement element: contelements){
+    for (WebElement element : contelements) {
       String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
       String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-    ContactData contact = new ContactData(id,firstname,lastname,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-    contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }

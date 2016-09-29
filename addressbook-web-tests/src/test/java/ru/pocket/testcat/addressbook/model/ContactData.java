@@ -1,27 +1,42 @@
 package ru.pocket.testcat.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstname;
-  private final String lastname;
-  private final String nickname;
-  private final String title;
-  private final String address;
-  private final String homePhone;
-  private final String mobile;
-  private final String workPhone;
-  private final String fax;
-  private final String email;
-  private final String homepage;
-  private final String address2;
-  private final String notes;
-  private final String yearbirth;
-  private final String anniver;
-  private final String bday;
-  private final String bmonth;
-  private final String aday;
-  private final String amonth;
-  private final String newgroup;
+  private int id =Integer.MAX_VALUE;;
+  private String firstname;
+  private String lastname;
+  private String nickname;
+  private String title;
+  private String address;
+  private String homePhone;
+  private String mobile;
+  private String workPhone;
+  private String fax;
+  private String email;
+  private String homepage;
+  private String address2;
+  private String notes;
+  private String yearbirth;
+  private String anniver;
+  private String bday;
+  private String bmonth;
+  private String aday;
+  private String amonth;
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  private String newgroup;
 
   @Override
   public boolean equals(Object o) {
@@ -40,56 +55,6 @@ public class ContactData {
     int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
-  }
-
-  public ContactData(String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday, String bmonth, String aday, String amonth, String newgroup) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobile = mobile;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.email = email;
-    this.homepage = homepage;
-    this.address2 = address2;
-    this.notes = notes;
-    this.yearbirth = yearbirth;
-    this.anniver = anniver;
-    this.bday = bday;
-    this.bmonth = bmonth;
-    this.aday = aday;
-    this.amonth = amonth;
-    this.newgroup = newgroup;
-  }
-
-
-
-  public ContactData(int id,String firstname, String lastname, String nickname, String title, String address, String homePhone, String mobile, String workPhone, String fax, String email, String homepage, String address2, String notes, String yearbirth, String anniver, String bday, String bmonth, String aday, String amonth, String newgroup) {
-    this.id = id;
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobile = mobile;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.email = email;
-    this.homepage = homepage;
-    this.address2 = address2;
-    this.notes = notes;
-    this.yearbirth = yearbirth;
-    this.anniver = anniver;
-    this.bday = bday;
-    this.bmonth = bmonth;
-    this.aday = aday;
-    this.amonth = amonth;
-    this.newgroup = newgroup;
   }
 
 
