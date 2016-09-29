@@ -72,7 +72,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void deleteContact() {
-    click(By.xpath("//div/div[4]/form[2]/div"));
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
 
   }
 
@@ -139,7 +139,6 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void alertDel() {
-
     wd.switchTo().alert().accept();
   }
 

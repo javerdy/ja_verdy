@@ -6,6 +6,19 @@ public class GroupData {
   private final String groupheader;
   private final String groupfooter;
 
+
+  public GroupData(int groupid, String groupname, String groupheader, String groupfooter) {
+    this.groupid = groupid;
+    this.groupname = groupname;
+    this.groupheader = groupheader;
+    this.groupfooter = groupfooter;
+  }
+/*  public GroupData(String groupname, String groupheader, String groupfooter) {
+    this.groupid = Integer.MAX_VALUE;
+    this.groupname = groupname;
+    this.groupheader = groupheader;
+    this.groupfooter = groupfooter;
+  }*/
   public void setGroupid(int groupid) {
     this.groupid = groupid;
   }
@@ -17,17 +30,6 @@ public class GroupData {
             "groupheader='" + groupheader + '\'' +
             ", groupname='" + groupname + '\'' +
             '}';
-  }
-
-
-
-  public GroupData( int groupid, String groupname, String groupheader, String groupfooter) {
-    this.groupid = groupid;
-    this.groupname = groupname;
-    this.groupheader = groupheader;
-    this.groupfooter = groupfooter;
-
-
   }
 
   @Override

@@ -1,8 +1,8 @@
 package ru.pocket.testcat.addressbook.tests;
 
 import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import ru.pocket.testcat.addressbook.appmanager.ApplicationManadger;
 
 /**
@@ -10,14 +10,14 @@ import ru.pocket.testcat.addressbook.appmanager.ApplicationManadger;
  */
 public class TestBase {
 
-  protected final ApplicationManadger app = new ApplicationManadger(BrowserType.CHROME);
+  protected static final ApplicationManadger app = new ApplicationManadger(BrowserType.CHROME);
 
-  @BeforeMethod
+  @BeforeSuite
   public void setUp() throws Exception {
     app.init();
   }
 
-  @AfterMethod
+  @AfterSuite
   public void tearDown() {
     app.stop();
   }

@@ -1,6 +1,7 @@
 package ru.pocket.testcat.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.pocket.testcat.addressbook.model.ContactData;
 
@@ -12,14 +13,16 @@ import java.util.List;
  * Created by Goblik on 31.08.2016.
  */
 public class ContactModifyTest extends TestBase {
-
-  @Test
-  public void testContactModify() {
-
+  @BeforeMethod
+  public  void ensurePrecondCont(){
     app.getContactHelper().goToHomePage();
     if (!app.getContactHelper().isThereaContact()) {
       app.getContactHelper().createContact(new ContactData("Gregorii","Smith",null,null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null));
     }
+  }
+
+  @Test
+  public void testContactModify() {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() -1);
     app.getContactHelper().editContact();

@@ -88,4 +88,12 @@ public class GroupHelper extends BaseHelper {
     }
     return groups;
   }
+
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
 }
