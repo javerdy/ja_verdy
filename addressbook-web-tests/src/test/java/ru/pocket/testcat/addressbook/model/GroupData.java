@@ -23,10 +23,30 @@ public class GroupData {
 
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    GroupData groupData = (GroupData) o;
+
+    if (groupid != groupData.groupid) return false;
+    return groupname != null ? groupname.equals(groupData.groupname) : groupData.groupname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = groupid;
+    result = 31 * result + (groupname != null ? groupname.hashCode() : 0);
+    return result;
+  }
+
   public GroupData withGroupfooter(String groupfooter) {
 
     this.groupfooter = groupfooter;
     return this;
+
 
   }
 
@@ -37,22 +57,6 @@ public class GroupData {
             "groupheader='" + groupheader + '\'' +
             ", groupname='" + groupname + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    GroupData groupData = (GroupData) o;
-
-    return groupname != null ? groupname.equals(groupData.groupname) : groupData.groupname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    return groupname != null ? groupname.hashCode() : 0;
   }
 
   public String getGroupname() {

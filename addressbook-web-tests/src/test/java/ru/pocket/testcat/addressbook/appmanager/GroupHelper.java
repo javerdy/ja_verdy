@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.pocket.testcat.addressbook.model.GroupData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Goblik on 26.08.2016.
@@ -68,15 +69,15 @@ public class GroupHelper extends BaseHelper {
   }
 
 
-  public boolean isThereaGroup() {
+/*  public boolean isThereaGroup() {
     return isElementPresent(By.name("selected[]"));
 
-  }
-
+  }*/
+/*
   public int getgroupCount() {
     return wd.findElements(By.name("selected[]")).size();
-  }
-
+  }*/
+/*
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
@@ -86,19 +87,44 @@ public class GroupHelper extends BaseHelper {
       groups.add(new GroupData().withGroupid(groupid).withGroupname(name));
     }
     return groups;
+  }*/
+
+  public Set<GroupData> all() {
+    Set<GroupData> groups = new HashSet<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int groupid = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groups.add(new GroupData().withGroupid(groupid).withGroupname(name));
+    }
+    return groups;
   }
 
-  public void modify(int index, GroupData group) {
-    selectGroup(index);
+  public void modify(GroupData group) {
+    selectGroupById(group.getGroupid());
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
     returnToGroupPage();
   }
 
+/*
   public void delete(int index) {
     selectGroup(index);
     deleteSelectedGroups();
     returnToGroupPage();
+  }
+*/
+
+  public void delete(GroupData group) {
+    selectGroupById(group.getGroupid());
+    deleteSelectedGroups();
+    returnToGroupPage();
+
+
+  }
+
+  public void selectGroupById(int groupid) {
+    wd.findElement(By.cssSelector("input[value='"+groupid+"']")).click();
   }
 }

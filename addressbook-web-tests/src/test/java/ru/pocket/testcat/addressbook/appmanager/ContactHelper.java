@@ -7,7 +7,9 @@ import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Goblik on 27.08.2016.
@@ -67,7 +69,8 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void updateContact() {
-    click(By.xpath(".//*[@id='content']/form[1]/input[22]"));
+    // click(By.xpath(".//*[@id='content']/form[1]/input[22]"));
+    click(By.name("update"));
 
   }
 
@@ -123,11 +126,17 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void fillContSmallForm(ContactData contactData) {
+  public void modify(ContactData contactData) {
+    selectContactById(contactData.getId());
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    modifysamll(contactData);
+    updateContact();
+    returnToContactPage();
+  }
 
+  private void modifysamll(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("nickname"), contactData.getNickname());
   }
 
   public boolean isThereaContact() {
@@ -135,12 +144,24 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnToContactPage() {
-    click(By.linkText("home page"));
-
+    //wd.get("http://localhost/addressbook/");
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
   }
 
+
   public void alertDel() {
+
     wd.switchTo().alert().accept();
+  /*  try {
+      wd.switchTo().alert();
+      return true;
+    } // try
+    catch (Exception e) {
+      return false;
+    } // catch*/
   }
 
 
@@ -151,18 +172,11 @@ public class ContactHelper extends BaseHelper {
 
   public void createSmallContact(ContactData contactdata) {
     initContact();
-    fillContSmallForm(contactdata);
+    modify(contactdata);
     pressEnter();
     returnToContactPage();
-
   }
 
-  public void delete(int index) {
-    selectContact(index);
-    deleteContact();
-    returnToContactPage();
-    alertDel();
-  }
 
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
@@ -176,5 +190,36 @@ public class ContactHelper extends BaseHelper {
     return contacts;
   }
 
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> contelements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr[2]/td[1]"));
+    for (WebElement element : contelements) {
+      String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
+      String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+    }
+    return contacts;
+  }
 
+  public void delete(int index) {
+    selectContact(index);
+    deleteContact();
+    alertDel();
+    returnToContactPage();
+
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteContact();
+    alertDel();
+    returnToContactPage();
+  }
+
+  private void selectContactById(int id) {
+    //wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
+    WebElement checkbox = wd.findElement(By.id("" + id));
+    checkbox.findElement(By.xpath("//*[@id='maintable']//td[7]/a")).click();
+  }
 }
