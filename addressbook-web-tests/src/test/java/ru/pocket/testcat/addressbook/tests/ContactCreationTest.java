@@ -11,6 +11,7 @@ public class ContactCreationTest extends TestBase {
 
 
   @Test
+
   public void contactCreationTest() {
     app.goTo().contactPage();
     Contacts before = app.contact().all();
@@ -24,7 +25,7 @@ public class ContactCreationTest extends TestBase {
 
   }
 
-  @Test
+/*  @Test
   public void contactBadCreationTest() {
     app.goTo().contactPage();
     Contacts before = app.contact().all();
@@ -35,7 +36,7 @@ public class ContactCreationTest extends TestBase {
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
-  }
+  }*/
 
 
 }
