@@ -24,7 +24,7 @@ public class ContactDelete extends TestBase {
   public void ensurePrecondCont() {
     app.goTo().homePage();
     if (app.contact().list().size() == 0) {
-      app.contact().create(new ContactData().withFirstname("test1").withLastname("test11"));
+      app.contact().create(new ContactData().withFirstname("Bear").withLastname("Smith"));
     }
   }
 

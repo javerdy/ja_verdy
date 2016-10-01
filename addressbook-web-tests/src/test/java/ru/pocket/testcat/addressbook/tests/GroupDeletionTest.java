@@ -6,16 +6,16 @@ import ru.pocket.testcat.addressbook.model.GroupData;
 import ru.pocket.testcat.addressbook.model.Groups;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 
 
 public class GroupDeletionTest extends TestBase {
+
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().all().size() == 0) {
-      app.group().create(new GroupData().withGroupname("test1"));
+      app.group().create(new GroupData().withGroupname("newgroup"));
     }
 
   }
@@ -23,11 +23,11 @@ public class GroupDeletionTest extends TestBase {
   @Test
   public void testGroupDeletion() {
     Groups before = app.group().all();
-    GroupData deleteGroup = before.iterator().next();
-    app.group().delete(deleteGroup);
+    GroupData deletedGroup = before.iterator().next();
+    app.group().delete(deletedGroup);
     Groups after = app.group().all();
-    assertEquals(after, before.size() - 1);
-    assertThat(after, equalTo(before.without(deleteGroup)));
+    assertEquals(after.size(), before.size() - 1);
+    assertThat(after, equalTo(before.without(deletedGroup)));
 
 
   }
