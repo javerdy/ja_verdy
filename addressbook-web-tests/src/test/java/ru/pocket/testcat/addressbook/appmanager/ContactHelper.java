@@ -150,6 +150,14 @@ public class ContactHelper extends BaseHelper {
   private void modifysamll(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobile());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail());
+    type(By.name("email3"), contactData.getEmail());
+
   }
 
   public boolean isThereaContact() {

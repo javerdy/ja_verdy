@@ -26,7 +26,7 @@ public class ContactPhoneTests extends TestBase {
               .withEmail("email")
               .withEmail2("email2")
               .withEmail3("email3"));
-
+      app.goTo().homePage();
     }
 
   }
@@ -39,5 +39,7 @@ public class ContactPhoneTests extends TestBase {
     assertThat(contactData.getHomePhone(), equalTo(contactInfoFromEditForm.getHomePhone()));
     assertThat(contactData.getMobile(), equalTo(contactInfoFromEditForm.getMobile()));
     assertThat(contactData.getWorkPhone(), equalTo(contactInfoFromEditForm.getWorkPhone()));
+    assertThat(contactData.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+    assertThat(contactData.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
   }
 }
