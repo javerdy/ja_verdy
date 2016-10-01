@@ -16,11 +16,25 @@ public class GroupCreationTest extends TestBase {
     Groups before = app.group().all();
     GroupData group = new GroupData().withGroupname("test2");
     app.group().create(group);
+    assertThat(app.group().getgroupCount(), equalTo(before.size() + 1));
     Groups after = app.group().all();
-    assertThat(after.size(),equalTo(before.size()+1));
     assertThat(after, equalTo(before
-            .withAdded(group.withGroupid(after.stream().mapToInt((g)->g.getGroupid()).max().getAsInt()))));
+            .withAdded(group.withGroupid(after.stream().mapToInt((g) -> g.getGroupid()).max().getAsInt()))));
+  }
 
+  @Test
+  public void testGroupBadCreation() {
+    app.goTo().groupPage();
+    Groups before = app.group().all();
+    GroupData group = new GroupData().withGroupname("test2'");
+    app.group().create(group);
+    assertThat(app.group().getgroupCount(), equalTo(before.size() + 1));
+
+    Groups after = app.group().all();
+    assertThat(after, equalTo(before
+            .withAdded(group.withGroupid(after.stream().mapToInt((g) -> g.getGroupid()).max().getAsInt()))));
+  }
+}
 //первый метод
 /*    int max = 0;
     for(GroupData g: after){
@@ -48,8 +62,3 @@ public class GroupCreationTest extends TestBase {
     app.group().create(new GroupData("newgroup", null, null));
     int after = app.group().getgroupCount();
     Assert.assertEquals(after, before + 1);*/
-
-
-  }
-
-}

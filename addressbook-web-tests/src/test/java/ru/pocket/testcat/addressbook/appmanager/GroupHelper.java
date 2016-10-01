@@ -74,12 +74,8 @@ public class GroupHelper extends BaseHelper {
 /*  public boolean isThereaGroup() {
     return isElementPresent(By.name("selected[]"));
 
-  }*/
-/*
-  public int getgroupCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }*/
-/*
+  }
+
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
@@ -90,6 +86,9 @@ public class GroupHelper extends BaseHelper {
     }
     return groups;
   }*/
+public int getgroupCount() {
+  return wd.findElements(By.name("selected[]")).size();
+}
 
   private Groups groupCash = null;
 
