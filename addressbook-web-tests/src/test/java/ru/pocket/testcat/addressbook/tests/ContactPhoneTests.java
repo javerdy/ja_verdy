@@ -28,11 +28,9 @@ public class ContactPhoneTests extends TestBase {
               .withAddress("address")
               .withEmail(" email@")
               .withEmail2("(hdgdrx@)")
-              .withEmail3("trbfjd-fss@").withAddress("Moscow").withAddress2("Zheleznodorozhnaya"));
+              .withEmail3("trbfjd-fss@"));
 
     }}
-
-
 
   @Test
   public void testAllPhones() {
@@ -70,23 +68,5 @@ public class ContactPhoneTests extends TestBase {
     return phone.replaceAll("\\s","").replaceAll("[-()]","");
   }
 
-  /*  @Test
-  public void testPhones() {
-    app.goTo().homePage();
-    ContactData contactData = app.contact().alllistSplit().iterator().next();
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contactData);
-
-    assertThat(contactData.getAllPhones(), equalTo(contactInfoFromEditForm.getAllPhones()));
-    assertThat(contactData.getHomePhone(), equalTo(cleaned(contactInfoFromEditForm.getHomePhone())));
-    assertThat(contactData.getMobile(), equalTo(cleaned(contactInfoFromEditForm.getMobile())));
-    assertThat(contactData.getWorkPhone(), equalTo(cleaned(contactInfoFromEditForm.getWorkPhone())));
-//    assertThat(contactData.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
- //   assertThat(contactData.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
- //   assertThat(contactData.getEmail2(), equalTo(contactInfoFromEditForm.getEmail2()));
- //   assertThat(contactData.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
-  }
-  public String cleaned (String phone){
-    return phone.replaceAll("\\s","").replaceAll("[-()]","");
-  }*/
 
 }
