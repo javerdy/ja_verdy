@@ -109,6 +109,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withNewgroup(String newgroup) {
+    this.newgroup = newgroup;
+    return this;
+  }
+
   public String getAllPhones() {
     return allPhones;
   }

@@ -7,10 +7,7 @@ import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Goblik on 27.08.2016.
@@ -370,7 +367,14 @@ public Set<ContactData> alllistSplit() {
             .withEmail3(email3);
   }
 
-  private void initContModifyById(int id) {
+
+
+  public void contbyid(int id) {
+    click(By.xpath("//a[contains(@href,'view.php?id=" + id + "')]"));
+    //wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", contact.getId()))).click();
+  }
+
+  public void initContModifyById(int id) {
     WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -403,4 +407,17 @@ public Set<ContactData> alllistSplit() {
     checkbox.findElement(By.xpath("./../../td[8]/a")).click();*/
 
   }
-}
+
+  public String getConfromcardForm(ContactData contactData) {
+      readContactCardById(contactData.getId());
+      String contactCardInfo = wd.findElement(By.xpath("//div[@id='content']")).getText();
+      wd.navigate().back();
+      return contactCardInfo;
+    }
+
+    private void readContactCardById(int id) {
+      WebElement checkbox = wd.findElement(By.id("" + id));
+      checkbox.findElement(By.xpath("//*[@id='maintable']//td[7]/a")).click();
+    }
+
+  }
