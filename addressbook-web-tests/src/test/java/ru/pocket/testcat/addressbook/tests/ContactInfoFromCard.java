@@ -89,12 +89,12 @@ public class ContactInfoFromCard extends TestBase {
     return phone.replaceAll("\\s","").replaceAll("[-)+(\\.]","");
   }
 
-  public static String cleanedNull(String data) {
+/*  public static String cleanedNull(String data) {
     return data.replaceAll("null","");
-  }
+  }*/
 
   public static String cleanedTabs(String data) {
-    //на всякий случай чистим переносы строк и пробелы на конце в данных (могут быть в адресе)
+
     return data.replaceAll("\\s$","");
   }
 }
