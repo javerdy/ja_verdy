@@ -30,6 +30,7 @@ public class ContactData {
   private String aday;
   private String amonth;
   private String photo;
+  private String allAddress;
 
 
   public void setId(int id) {
@@ -45,6 +46,7 @@ public class ContactData {
     this.firstname = firstname;
     return this;
   }
+
 
   public ContactData withLastname(String lastname) {
     this.lastname = lastname;
@@ -106,6 +108,10 @@ public class ContactData {
 
   public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
+    return this;
+  }
+  public ContactData withAlladdress(String allAddress) {
+    this.allAddress = allAddress;
     return this;
   }
 

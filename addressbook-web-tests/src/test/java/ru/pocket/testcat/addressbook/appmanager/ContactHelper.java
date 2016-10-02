@@ -105,7 +105,7 @@ public class ContactHelper extends BaseHelper {
     modifysamll(contactData);
     pressEnter();
     returnToContactPage();
-    contactCache = null;
+    //contactCache = null;
   }
 
   public void fillContCreationForm(ContactData contactData, boolean creat) {
@@ -121,6 +121,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
     type(By.name("homepage"), contactData.getHomepage());
 //    dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
 //    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
@@ -155,8 +157,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("email2"), contactData.getEmail());
-    type(By.name("email3"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
 
   }
 
@@ -222,9 +224,9 @@ public class ContactHelper extends BaseHelper {
     }
     return contacts;
   }*/
-/*
 
-  public Set<ContactData> all() {
+
+  public Set<ContactData> alllistSplit() {
 
     Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
@@ -244,7 +246,47 @@ public class ContactHelper extends BaseHelper {
     }
     return contacts;
   }
-*/
+
+  public Set<ContactData> allmerge() {
+
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String firstname = cells.get(1).getText();
+      String lastname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();
+      String allAddress = cells.get(3).getText();
+      contacts.add(new ContactData()
+              .withId(id)
+              .withFirstname(firstname)
+              .withLastname(lastname).withAllPhones(allPhones).withAllEmails(allEmails).withAlladdress(allAddress));
+
+    }
+    return contacts;
+  }
+
+ /* private Contacts contactCache = null;
+  public Contacts all() {
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+    for (WebElement element : elements) {
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      String firstname = element.findElement(By.xpath("./td[3]")).getText();
+      String allPhones = element.findElement(By.xpath("./td[6]")).getText();
+      String allEmails = element.findElement(By.xpath("./td[5]")).getText();
+      String address = element.findElement(By.xpath("./td[4]")).getText();
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withAllPhones(allPhones).withAddress(address));
+    }
+    return new Contacts(contactCache);
+  }*/
 
   private Contacts contactCache = null;
 
