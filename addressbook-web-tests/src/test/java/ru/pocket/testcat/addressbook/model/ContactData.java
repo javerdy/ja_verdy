@@ -4,7 +4,6 @@ import java.io.File;
 
 public class ContactData {
   private int id = Integer.MAX_VALUE;
-  ;
   private String firstname;
   private String lastname;
   private String nickname;
@@ -29,12 +28,7 @@ public class ContactData {
   private String bmonth;
   private String aday;
   private String amonth;
-  private String photo;
-
-
-  public void setId(int id) {
-    this.id = id;
-  }
+  private File photo;
 
   public ContactData withId(int id) {
     this.id = id;
@@ -85,6 +79,7 @@ public class ContactData {
     this.fax = fax;
     return this;
   }
+
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
@@ -94,6 +89,7 @@ public class ContactData {
     this.email = mail;
     return this;
   }
+
   public ContactData withEmail2(String mail2) {
     this.email2 = mail2;
     return this;
@@ -114,21 +110,6 @@ public class ContactData {
     return this;
   }
 
-  public String getAllPhones() {
-    return allPhones;
-  }
-
-  public String getEmail2() {
-    return email2;
-  }
-
-  public String getEmail3() {
-    return email3;
-  }
-
-  public String getAllEmails() {
-    return allEmails;
-  }
 
   public ContactData homePage(String home) {
     this.homepage = homepage;
@@ -161,7 +142,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
+    this.photo = photo;
     return this;
   }
 
@@ -250,8 +231,25 @@ public class ContactData {
     return newgroup;
   }
 
-  public String getPhoto() {
+  public File getPhoto() {
     return photo;
+  }
+
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   @Override

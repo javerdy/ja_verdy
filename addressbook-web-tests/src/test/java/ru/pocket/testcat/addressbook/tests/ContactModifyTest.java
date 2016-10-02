@@ -1,14 +1,9 @@
 package ru.pocket.testcat.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
-
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,7 +17,7 @@ public class ContactModifyTest extends TestBase {
   public  void ensurePrecondCont(){
     app.contact().goToHomePage();
     if (app.contact().list().size()== 0) {
-      app.contact().create(new ContactData().withFirstname("test1").withLastname("test11"));
+      app.contact().create(new ContactData().withFirstname("test1").withLastname("test11"), true);
     }
   }
 

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
 import java.util.NoSuchElementException;
 
 /**
@@ -37,6 +38,13 @@ public class BaseHelper {
       }
     }
   }
+
+  public void attach(By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
+      }
+    }
+
 
   public void dropdownsel(WebElement locator, String choice) {
     new Select(locator).selectByVisibleText(choice);
