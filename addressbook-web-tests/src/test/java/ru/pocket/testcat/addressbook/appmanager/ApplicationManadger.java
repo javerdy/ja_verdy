@@ -29,13 +29,15 @@ public class ApplicationManadger {
 
   public void init() {
 
-    if (browser == BrowserType.FIREFOX) {
+    if(browser == BrowserType.FIREFOX)
+    {
       wd = new FirefoxDriver();
-    } else if (browser == BrowserType.CHROME) {
+    } else if (browser == BrowserType.CHROME){
       wd = new ChromeDriver();
-    } else if (browser == BrowserType.IE) {
+    }else if (browser == BrowserType.IE) {
       wd = new InternetExplorerDriver();
-    } else if (browser == BrowserType.OPERA_BLINK) {
+    }
+    else if (browser == BrowserType.OPERA_BLINK) {
       wd = new OperaDriver();
 
     }
@@ -47,6 +49,12 @@ public class ApplicationManadger {
     contactHelper = new ContactHelper(wd);
     sessionHelper.login("admin", "secret");
   }
+
+
+  public void stop() {
+    wd.quit();
+  }
+
   public GroupHelper group() {
     return groupHelper;
   }
@@ -57,9 +65,5 @@ public class ApplicationManadger {
 
   public ContactHelper contact() {
     return contactHelper;
-  }
-
-  public void stop() {
-    wd.quit();
   }
 }
