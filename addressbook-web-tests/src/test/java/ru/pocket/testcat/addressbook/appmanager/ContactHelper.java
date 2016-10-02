@@ -155,8 +155,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("email2"), contactData.getEmail());
-    type(By.name("email3"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
 
   }
 
@@ -299,6 +299,50 @@ public class ContactHelper extends BaseHelper {
     return contactCache;
   }
 */
+public Set<ContactData> alllistSplit() {
+
+  Set<ContactData> contacts = new HashSet<ContactData>();
+  List<WebElement> rows = wd.findElements(By.name("entry"));
+  for (WebElement row : rows) {
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+    String firstname = cells.get(1).getText();
+    String lastname = cells.get(2).getText();
+    String[] phones = cells.get(5).getText().split("\n");
+    contacts.add(new ContactData()
+            .withId(id)
+            .withFirstname(firstname)
+            .withLastname(lastname)
+            .withHomePhone(phones[0])
+            .withMobile(phones[1])
+            .withWork(phones[2]));
+  }
+  return contacts;
+}
+
+  public Set<ContactData> allmerge() {
+
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String firstname = cells.get(1).getText();
+      String lastname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();
+      String allAddress = cells.get(3).getText();
+      contacts.add(new ContactData()
+              .withId(id)
+              .withFirstname(firstname)
+              .withLastname(lastname)
+              .withAllPhones(allPhones)
+              .withAllEmails(allEmails).withAddress(allAddress));
+
+    }
+    return contacts;
+  }
+
 
 
   public ContactData infoFromEditForm(ContactData contact) {

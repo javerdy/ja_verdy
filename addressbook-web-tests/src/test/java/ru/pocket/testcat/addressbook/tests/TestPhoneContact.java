@@ -11,9 +11,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Created by Goblik on 01.10.2016.
+ * Created by Goblik on 02.10.2016.
  */
-public class ContactPhoneTests extends TestBase {
+public class TestPhoneContact extends TestBase {
 
   @BeforeMethod
 
@@ -30,7 +30,8 @@ public class ContactPhoneTests extends TestBase {
               .withEmail2("(hdgdrx@)")
               .withEmail3("trbfjd-fss@"));
 
-    }}
+    }
+  }
 
   @Test
   public void testAllPhones() {
@@ -45,28 +46,27 @@ public class ContactPhoneTests extends TestBase {
   }
 
   private String mergeEmails(ContactData contemail) {
-    return  Arrays.asList(contemail.getEmail(),contemail.getEmail2(), contemail.getEmail3())
-            .stream().filter((s) -> ! s.equals("")).map(ContactPhoneTests::cleanmail)
+    return Arrays.asList(contemail.getEmail(), contemail.getEmail2(), contemail.getEmail3())
+            .stream().filter((s) -> !s.equals("")).map(TestPhoneContact::cleanmail)
             .collect(Collectors.joining("\n"));
   }
 
-
-    public static String cleanmail (String mail){
-      return mail.replaceAll("\\s","").replaceAll(" [-()]","");
-    }
+  public static String cleanmail(String mail) {
+    return mail.replaceAll("\\s", "").replaceAll(" [-()]", "");
+  }
 
 
   private String mergePhones(ContactData contactmerge) {
 
-    return  Arrays.asList(contactmerge.getHomePhone(),contactmerge.getWorkPhone(), contactmerge.getMobile())
-            .stream().filter((s) -> ! s.equals("")).map(ContactPhoneTests::clean)
+    return Arrays.asList(contactmerge.getHomePhone(), contactmerge.getWorkPhone(), contactmerge.getMobile())
+            .stream().filter((s) -> !s.equals("")).map(TestPhoneContact::clean)
             .collect(Collectors.joining("\n"));
 
   }
 
-  public static String clean (String phone){
-    return phone.replaceAll("\\s","").replaceAll("[-()]","");
+  public static String clean(String phone) {
+    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
-
-
 }
+
+
