@@ -22,17 +22,16 @@ public class GroupCreationTest extends TestBase {
             .withAdded(group.withGroupid(after.stream().mapToInt((g) -> g.getGroupid()).max().getAsInt()))));
   }
 
+
   @Test
-  public void testGroupBadCreation() {
+  public void testBadGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
-    GroupData group = new GroupData().withGroupname("test2'");
+    GroupData group = new GroupData().withGroupname("test21'");
     app.group().create(group);
-    assertThat(app.group().getgroupCount(), equalTo(before.size() + 1));
-
+    assertThat(app.group().getgroupCount (), equalTo(before.size()));
     Groups after = app.group().all();
-    assertThat(after, equalTo(before
-            .withAdded(group.withGroupid(after.stream().mapToInt((g) -> g.getGroupid()).max().getAsInt()))));
+    assertThat(after, equalTo(before));
   }
 }
 //первый метод
