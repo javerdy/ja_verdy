@@ -1,5 +1,6 @@
 package ru.pocket.testcat.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -7,8 +8,11 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class GroupData {
   @XStreamOmitField
   public int groupid = Integer.MAX_VALUE;
+  @Expose
   public String groupname;
+  @Expose
   public String groupheader;
+  @Expose
   public String groupfooter;
 
   public GroupData withGroupid(int groupid) {
