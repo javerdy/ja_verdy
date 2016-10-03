@@ -1,10 +1,10 @@
 package ru.pocket.testcat.addressbook.model;
 
 public class GroupData {
-  private int groupid = Integer.MAX_VALUE;
-  private String groupname;
-  private String groupheader;
-  private String groupfooter;
+  public int groupid = Integer.MAX_VALUE;
+  public String groupname;
+  public String groupheader;
+  public String groupfooter;
 
   public GroupData withGroupid(int groupid) {
     this.groupid = groupid;
