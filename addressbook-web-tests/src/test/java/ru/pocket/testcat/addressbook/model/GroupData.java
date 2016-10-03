@@ -1,6 +1,11 @@
 package ru.pocket.testcat.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("group")
 public class GroupData {
+  @XStreamOmitField
   public int groupid = Integer.MAX_VALUE;
   public String groupname;
   public String groupheader;

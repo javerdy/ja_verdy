@@ -1,10 +1,62 @@
-test 0;header 0;footer 0;
-test 1;header 1;footer 1;
-test 2;header 2;footer 2;
-test 3;header 3;footer 3;
-test 4;header 4;footer 4;
-test 5;header 5;footer 5;
-test 6;header 6;footer 6;
-test 7;header 7;footer 7;
-test 8;header 8;footer 8;
-test 9;header 9;footer 9;
+<list>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 0</groupname>
+    <groupheader>header 0</groupheader>
+    <groupfooter>footer 0</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 1</groupname>
+    <groupheader>header 1</groupheader>
+    <groupfooter>footer 1</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 2</groupname>
+    <groupheader>header 2</groupheader>
+    <groupfooter>footer 2</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 3</groupname>
+    <groupheader>header 3</groupheader>
+    <groupfooter>footer 3</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 4</groupname>
+    <groupheader>header 4</groupheader>
+    <groupfooter>footer 4</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 5</groupname>
+    <groupheader>header 5</groupheader>
+    <groupfooter>footer 5</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 6</groupname>
+    <groupheader>header 6</groupheader>
+    <groupfooter>footer 6</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 7</groupname>
+    <groupheader>header 7</groupheader>
+    <groupfooter>footer 7</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 8</groupname>
+    <groupheader>header 8</groupheader>
+    <groupfooter>footer 8</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+  <ru.pocket.testcat.addressbook.model.GroupData>
+    <groupid>2147483647</groupid>
+    <groupname>test 9</groupname>
+    <groupheader>header 9</groupheader>
+    <groupfooter>footer 9</groupfooter>
+  </ru.pocket.testcat.addressbook.model.GroupData>
+</list>
