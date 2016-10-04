@@ -29,15 +29,15 @@ public class Contacts extends ForwardingSet<ContactData> {
   }
 
   public ru.pocket.testcat.addressbook.model.Contacts withAdded(ContactData contact) {
-    ru.pocket.testcat.addressbook.model.Contacts contactSu = new ru.pocket.testcat.addressbook.model.Contacts(this);
-    contactSu.add(contact);
-    return contactSu;
+    ru.pocket.testcat.addressbook.model.Contacts contacts = new ru.pocket.testcat.addressbook.model.Contacts(this);
+    contacts.add(contact);
+    return contacts;
   }
 
   public ru.pocket.testcat.addressbook.model.Contacts without(ContactData contact) {
-    ru.pocket.testcat.addressbook.model.Contacts contactSu = new ru.pocket.testcat.addressbook.model.Contacts(this);
-    contactSu.remove(contact);
-    return contactSu;
+    ru.pocket.testcat.addressbook.model.Contacts contacts = new ru.pocket.testcat.addressbook.model.Contacts(this);
+    contacts.remove(contact);
+    return contacts;
   }
 }
 

@@ -207,21 +207,7 @@ public class ContactHelper extends BaseHelper {
     return contacts;
   }
 
-
-/*  public Contacts all() {
-    Contacts contacts = new Contacts();
-    List<WebElement> contelements = wd.findElements(By.xpath("./[@id='maintable']/tbody/tr[2]/td[1]"));
-    for (WebElement element : contelements) {
-      String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
-      String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-    }
-    return contacts;
-  }*/
-/*
-
-  public Set<ContactData> all() {
+/*  public Set<ContactData> allwithoutcash() {
 
     Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
@@ -240,8 +226,7 @@ public class ContactHelper extends BaseHelper {
               .withWork(phones[2]));
     }
     return contacts;
-  }
-*/
+  }*/
 
   private Contacts contactCache = null;
 
@@ -270,32 +255,7 @@ public class ContactHelper extends BaseHelper {
     }
     return contactCache;
   }
-/*
- private Contacts contactCache = null;
-  public Contacts all() {
-    if (contactCache != null) {
-      return new Contacts(contactCache);
-    }
-    contactCache = new Contacts();
-    List<WebElement> rows = wd.findElements(By.name("entry"));
-    for (WebElement row : rows) {
-      List<WebElement> cells = row.findElements(By.tagName("td"));
-      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-      String firstname = cells.get(1).getText();
-      String lastname = cells.get(2).getText();
-      String[] phones = cells.get(5).getText().split("\n");
-      ContactData contact = new ContactData()
-              .withId(id)
-              .withFirstname(firstname)
-              .withLastname(lastname)
-              .withHomePhone(phones[0])
-              .withMobile(phones[1])
-              .withWork(phones[2]);
-      contactCache.add(contact);
-    }
-    return contactCache;
-  }
-*/
+
 public Set<ContactData> alllistSplit() {
 
   Set<ContactData> contacts = new HashSet<ContactData>();
@@ -339,8 +299,6 @@ public Set<ContactData> alllistSplit() {
     }
     return contacts;
   }
-
-
 
   public ContactData infoFromEditForm(ContactData contact) {
     initContModifyById(contact.getId());

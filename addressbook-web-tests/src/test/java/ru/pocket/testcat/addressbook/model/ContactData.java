@@ -1,10 +1,20 @@
 package ru.pocket.testcat.addressbook.model;
 
-import java.io.File;
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import java.io.File;
+@XStreamAlias("group")
 public class ContactData {
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+  @Expose
   private String firstname;
+
+
+  @Expose
+
   private String lastname;
   private String nickname;
   private String title;
@@ -283,7 +293,6 @@ public class ContactData {
             ", photo='" + photo + '\'' +
             '}';
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -291,63 +300,17 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-    if (nickname != null ? !nickname.equals(that.nickname) : that.nickname != null) return false;
-    if (title != null ? !title.equals(that.title) : that.title != null) return false;
-    if (address != null ? !address.equals(that.address) : that.address != null) return false;
-    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
-    if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
-    if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
-    if (fax != null ? !fax.equals(that.fax) : that.fax != null) return false;
-    if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
-    if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
-    if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
-    if (homepage != null ? !homepage.equals(that.homepage) : that.homepage != null) return false;
-    if (address2 != null ? !address2.equals(that.address2) : that.address2 != null) return false;
-    if (notes != null ? !notes.equals(that.notes) : that.notes != null) return false;
-    if (yearbirth != null ? !yearbirth.equals(that.yearbirth) : that.yearbirth != null) return false;
-    if (anniver != null ? !anniver.equals(that.anniver) : that.anniver != null) return false;
-    if (newgroup != null ? !newgroup.equals(that.newgroup) : that.newgroup != null) return false;
-    if (bday != null ? !bday.equals(that.bday) : that.bday != null) return false;
-    if (bmonth != null ? !bmonth.equals(that.bmonth) : that.bmonth != null) return false;
-    if (aday != null ? !aday.equals(that.aday) : that.aday != null) return false;
-    if (amonth != null ? !amonth.equals(that.amonth) : that.amonth != null) return false;
-    return photo != null ? photo.equals(that.photo) : that.photo == null;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
   }
 
   @Override
   public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
-    result = 31 * result + (title != null ? title.hashCode() : 0);
-    result = 31 * result + (address != null ? address.hashCode() : 0);
-    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
-    result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
-    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
-    result = 31 * result + (fax != null ? fax.hashCode() : 0);
-    result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
-    result = 31 * result + (email != null ? email.hashCode() : 0);
-    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
-    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
-    result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
-    result = 31 * result + (homepage != null ? homepage.hashCode() : 0);
-    result = 31 * result + (address2 != null ? address2.hashCode() : 0);
-    result = 31 * result + (notes != null ? notes.hashCode() : 0);
-    result = 31 * result + (yearbirth != null ? yearbirth.hashCode() : 0);
-    result = 31 * result + (anniver != null ? anniver.hashCode() : 0);
-    result = 31 * result + (newgroup != null ? newgroup.hashCode() : 0);
-    result = 31 * result + (bday != null ? bday.hashCode() : 0);
-    result = 31 * result + (bmonth != null ? bmonth.hashCode() : 0);
-    result = 31 * result + (aday != null ? aday.hashCode() : 0);
-    result = 31 * result + (amonth != null ? amonth.hashCode() : 0);
-    result = 31 * result + (photo != null ? photo.hashCode() : 0);
     return result;
   }
+
+
 }
