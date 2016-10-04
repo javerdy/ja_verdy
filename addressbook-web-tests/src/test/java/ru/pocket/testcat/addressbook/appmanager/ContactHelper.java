@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
+import ru.pocket.testcat.addressbook.model.Groups;
 
 import java.util.*;
 
@@ -235,7 +236,7 @@ public class ContactHelper extends BaseHelper {
       return new Contacts(contactCache);
     }
     contactCache = new Contacts();
-    List<WebElement> rows = wd.findElements(By.name("entry"));
+    List<WebElement> rows = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
@@ -244,17 +245,37 @@ public class ContactHelper extends BaseHelper {
       String address = cells.get(3).getText();
       String allEmails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
-      ContactData contact = new ContactData()
+      contactCache.add(new ContactData()
               .withId(id)
               .withFirstname(firstname)
               .withLastname(lastname)
               .withAddress(address)
               .withAllEmails(allEmails)
-              .withAllPhones(allPhones);
-      contactCache.add(contact);
+              .withAllPhones(allPhones));
     }
-    return contactCache;
+    return new Contacts(contactCache);
+
   }
+
+/*  public Contacts alls() {
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+    for (WebElement element : elements) {
+
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      String firstname = element.findElement(By.xpath("./td[3]")).getText();
+      String allPhones = element.findElement(By.xpath("./td[6]")).getText();
+      String allEmails = element.findElement(By.xpath("./td[5]")).getText();
+      String address = element.findElement(By.xpath("./td[4]")).getText();
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withAllPhones(allPhones).withAllEmails(allEmails).withAddress(address));
+    }
+    return new Contacts(contactCache);
+  }*/
 
 public Set<ContactData> alllistSplit() {
 
