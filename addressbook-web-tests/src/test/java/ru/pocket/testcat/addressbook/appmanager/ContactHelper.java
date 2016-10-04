@@ -124,14 +124,14 @@ public class ContactHelper extends BaseHelper {
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
     type(By.name("homepage"), contactData.getHomepage());
-    dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
+ /*   dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
     new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
     dropdownsel(wd.findElement(By.name("bmonth")), contactData.getBmonth());
     type(By.name("byear"), contactData.getYearbirth());
     dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
     dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
     type(By.name("ayear"), contactData.getAnniver());
-    type(By.name("address2"), contactData.getAddress2());
+*/    type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
 
   }

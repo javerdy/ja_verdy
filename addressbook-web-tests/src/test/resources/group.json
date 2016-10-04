@@ -13,5 +13,15 @@
     "groupname": "test 2",
     "groupheader": "header 2",
     "groupfooter": "footer 2"
+  },
+  {
+    "groupname": "test 3",
+    "groupheader": "header 3",
+    "groupfooter": "footer 3"
+  },
+  {
+    "groupname": "test 4",
+    "groupheader": "header 4",
+    "groupfooter": "footer 4"
   }
 ]

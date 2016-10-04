@@ -58,14 +58,29 @@ public class ContactCreationTest extends TestBase {
     }
   }
 
+
+/*  @Test(dataProvider = "readyContactsFromJSON")
+  public void testContJsonCreationfoto(ContactData contact) {
+    app.contact().goToHomePage();
+    Contacts before = app.contact().all();
+    File photo = new File("src\\test\\resources\\Utenok.jpg");
+    ContactData contact = new ContactData()
+            .withFirstname("firstname1").withLastname("lastname2").withHomePhone("+7900565")
+            .withHomePhone("1234567").withNewgroup("test1").withPhoto(photo);
+    //app.goTo().homePage();
+    app.contact().create(contact, true);
+    app.goTo().homePage();
+    assertThat(app.contact().getContactCount(),equalTo(before.size() + 1));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo
+            (before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
+  }*/
+
+
   @Test(dataProvider = "readyContactsFromJSON")
   public void testContJsonCreation(ContactData contact) {
     app.contact().goToHomePage();
     Contacts before = app.contact().all();
-    //File photo = new File("src\\test\\resources\\Utenok.jpg");
-    //ContactData contact = new ContactData();
-            /*.withFirstname("firstname1").withLastname("lastname2").withHomePhone("+7900565")
-            .withHomePhone("1234567").withNewgroup("test1").withPhoto(photo);*/
     app.contact().createwithoutdrop(contact);
     assertThat(app.contact().getContactCount(),equalTo(before.size() + 1));
     Contacts after = app.contact().all();
@@ -74,8 +89,8 @@ public class ContactCreationTest extends TestBase {
   }
 
 
-
-  @Test(enabled = false)
+/*
+  @Test(enabled = true)
   public void testContactCreation() {
     app.contact().goToHomePage();
     Contacts before = app.contact().all();
@@ -83,13 +98,13 @@ public class ContactCreationTest extends TestBase {
     ContactData contact = new ContactData()
             .withFirstname("firstname1").withLastname("lastname2").withHomePhone("+7900565")
             .withHomePhone("1234567").withNewgroup("test1").withPhoto(photo);
-    app.goTo().homePage();
     app.contact().create(contact, true);
+    app.goTo().homePage();
     assertThat(app.contact().getContactCount(),equalTo(before.size() + 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo
             (before.withAdded(contact.withId(after.stream().mapToInt(c -> c.getId()).max().getAsInt()))));
-  }
+  }*/
 
 /*  @Test
 

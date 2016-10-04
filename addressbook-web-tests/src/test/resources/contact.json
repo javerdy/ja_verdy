@@ -1,14 +1,23 @@
 [
   {
     "firstname": "Firstname 0",
-    "lastname": "Lastname 0"
+    "lastname": "Lastname 0",
+    "homePhone": "+79001234450",
+    "email": "user0@mail.ru",
+    "newgroup": "newgroup"
   },
   {
     "firstname": "Firstname 1",
-    "lastname": "Lastname 1"
+    "lastname": "Lastname 1",
+    "homePhone": "+79001234451",
+    "email": "user1@mail.ru",
+    "newgroup": "newgroup"
   },
   {
     "firstname": "Firstname 2",
-    "lastname": "Lastname 2"
+    "lastname": "Lastname 2",
+    "homePhone": "+79001234452",
+    "email": "user2@mail.ru",
+    "newgroup": "newgroup"
   }
 ]

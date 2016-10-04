@@ -80,17 +80,21 @@ public class GroupdataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
     for (GroupData group : groups) {
-      writer.write(String.format("%s;%s;%s;\n", group.getGroupname(), group.getGroupheader(), group.getGroupfooter()));
+      writer.write(String.format("%s;%s;%s;\n",
+              group.getGroupname(),
+              group.getGroupheader(),
+              group.getGroupfooter()));
     }
-
     writer.close();
   }
 
   private List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i = 0; i < count; i++) {
-      groups.add(new GroupData().withGroupname(String.format("test %s", i))
-              .withGroupheader(String.format("header %s", i)).withGroupfooter(String.format("footer %s", i)));
+      groups.add(new GroupData()
+              .withGroupname(String.format("test %s", i))
+              .withGroupheader(String.format("header %s", i))
+              .withGroupfooter(String.format("footer %s", i)));
     }
     return groups;
   }

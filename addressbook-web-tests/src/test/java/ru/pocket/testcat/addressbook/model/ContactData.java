@@ -11,21 +11,26 @@ public class ContactData {
   private int id = Integer.MAX_VALUE;
   @Expose
   private String firstname;
-
-
   @Expose
-
   private String lastname;
+
   private String nickname;
+
   private String title;
   private String address;
+  @Expose
   private String homePhone;
+  @Expose
   private String mobile;
+  @Expose
   private String workPhone;
   private String fax;
   private String allPhones;
+  @Expose
   private String email;
+  @Expose
   private String email2;
+  @Expose
   private String email3;
   private String allEmails;
   private String homepage;
@@ -33,11 +38,36 @@ public class ContactData {
   private String notes;
   private String yearbirth;
   private String anniver;
+  @Expose
   private String newgroup;
   private String bday;
   private String bmonth;
   private String aday;
   private String amonth;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    return result;
+  }
+
+  @Expose
+
   private File photo;
 
   public ContactData withId(int id) {
@@ -245,7 +275,6 @@ public class ContactData {
     return photo;
   }
 
-
   public String getAllPhones() {
     return allPhones;
   }
@@ -294,19 +323,4 @@ public class ContactData {
             '}';
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    return id == that.id;
-
-  }
-
-  @Override
-  public int hashCode() {
-    return id;
-  }
 }
