@@ -3,12 +3,15 @@ package ru.pocket.testcat.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
-import ru.pocket.testcat.addressbook.model.Groups;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Goblik on 27.08.2016.
@@ -98,7 +101,8 @@ public class ContactHelper extends BaseHelper {
     returnToContactPage();
 
   }
-  public void createwithoutdrop(ContactData contactData){
+
+  public void createwithoutdrop(ContactData contactData) {
     initContact();
     modifysamll(contactData);
     pressEnter();
@@ -112,23 +116,23 @@ public class ContactHelper extends BaseHelper {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
     attach(By.name("photo"), contactData.getPhoto());
-    /*type(By.name("title"), contactData.getTitle());
+    type(By.name("title"), contactData.getTitle());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("homepage"), contactData.getHomepage());*/
-//    dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
-//    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
-    //   dropdownsel(wd.findElement(By.name("bmonth")), contactData.getBmonth());
- //   type(By.name("byear"), contactData.getYearbirth());
-    //  dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
-//    dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
-/*    type(By.name("ayear"), contactData.getAnniver());
+    type(By.name("homepage"), contactData.getHomepage());
+    dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
+    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
+    dropdownsel(wd.findElement(By.name("bmonth")), contactData.getBmonth());
+    type(By.name("byear"), contactData.getYearbirth());
+    dropdownsel(wd.findElement(By.name("aday")), contactData.getAday());
+    dropdownsel(wd.findElement(By.name("amonth")), contactData.getAmonth());
+    type(By.name("ayear"), contactData.getAnniver());
     type(By.name("address2"), contactData.getAddress2());
-    type(By.name("notes"), contactData.getNotes());*/
+    type(By.name("notes"), contactData.getNotes());
 
   }
 
@@ -277,26 +281,26 @@ public class ContactHelper extends BaseHelper {
     return new Contacts(contactCache);
   }*/
 
-public Set<ContactData> alllistSplit() {
+  public Set<ContactData> alllistSplit() {
 
-  Set<ContactData> contacts = new HashSet<ContactData>();
-  List<WebElement> rows = wd.findElements(By.name("entry"));
-  for (WebElement row : rows) {
-    List<WebElement> cells = row.findElements(By.tagName("td"));
-    int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-    String firstname = cells.get(1).getText();
-    String lastname = cells.get(2).getText();
-    String[] phones = cells.get(5).getText().split("\n");
-    contacts.add(new ContactData()
-            .withId(id)
-            .withFirstname(firstname)
-            .withLastname(lastname)
-            .withHomePhone(phones[0])
-            .withMobile(phones[1])
-            .withWork(phones[2]));
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String firstname = cells.get(1).getText();
+      String lastname = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      contacts.add(new ContactData()
+              .withId(id)
+              .withFirstname(firstname)
+              .withLastname(lastname)
+              .withHomePhone(phones[0])
+              .withMobile(phones[1])
+              .withWork(phones[2]));
+    }
+    return contacts;
   }
-  return contacts;
-}
 
   public Set<ContactData> allmerge() {
 
@@ -347,7 +351,6 @@ public Set<ContactData> alllistSplit() {
   }
 
 
-
   public void contbyid(int id) {
     click(By.xpath("//a[contains(@href,'view.php?id=" + id + "')]"));
     //wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", contact.getId()))).click();
@@ -388,15 +391,15 @@ public Set<ContactData> alllistSplit() {
   }
 
   public String getConfromcardForm(ContactData contactData) {
-      readContactCardById(contactData.getId());
-      String contactCardInfo = wd.findElement(By.xpath("//div[@id='content']")).getText();
-      wd.navigate().back();
-      return contactCardInfo;
-    }
-
-    private void readContactCardById(int id) {
-      WebElement checkbox = wd.findElement(By.id("" + id));
-      checkbox.findElement(By.xpath("//*[@id='maintable']//td[7]/a")).click();
-    }
-
+    readContactCardById(contactData.getId());
+    String contactCardInfo = wd.findElement(By.xpath("//div[@id='content']")).getText();
+    wd.navigate().back();
+    return contactCardInfo;
   }
+
+  private void readContactCardById(int id) {
+    WebElement checkbox = wd.findElement(By.id("" + id));
+    checkbox.findElement(By.xpath("//*[@id='maintable']//td[7]/a")).click();
+  }
+
+}
