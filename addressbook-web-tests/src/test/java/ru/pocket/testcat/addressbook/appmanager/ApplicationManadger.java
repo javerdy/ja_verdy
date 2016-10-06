@@ -7,12 +7,18 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Goblik on 26.08.2016.
  */
 public class ApplicationManadger {
+  private final Properties properties;
   WebDriver wd;
 
 
@@ -22,12 +28,16 @@ public class ApplicationManadger {
   private ContactHelper contactHelper;
   private String browser;
 
-  public ApplicationManadger(String browser) {
+  public ApplicationManadger(String browser)  {
     this.browser = browser;
+    properties = new Properties();
   }
 
 
-  public void init() {
+  public void init() throws IOException {
+    String target = System.getProperty("target", "local");
+
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     if(browser == BrowserType.FIREFOX)
     {
@@ -42,12 +52,12 @@ public class ApplicationManadger {
 
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook");
+    wd.get(properties.getProperty("web.baseUrl"));
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     contactHelper = new ContactHelper(wd);
-    sessionHelper.login("admin", "secret");
+    sessionHelper.login(properties.getProperty("web.adminLogin"),properties.getProperty("web.adminPassword"));
   }
 
 

@@ -10,7 +10,8 @@ import ru.pocket.testcat.addressbook.appmanager.ApplicationManadger;
  */
 public class TestBase {
 
-  protected static final ApplicationManadger app = new ApplicationManadger(BrowserType.FIREFOX);
+  protected static final ApplicationManadger app
+          = new ApplicationManadger(System.getProperty("browser", BrowserType.CHROME));
 
   @BeforeSuite
   public void setUp() throws Exception {

@@ -38,8 +38,9 @@ public class GroupCreationTest extends TestBase {
   @DataProvider
   public Iterator<Object[]> validGroupsFromXML() throws IOException {
  //   List<Object[]> list = new ArrayList<Object[]>();
+    try (
     BufferedReader reader = new BufferedReader(new FileReader
-            (new File("src/test/resources/groups.xml")));
+            (new File("src/test/resources/groups.xml"))))  {
     String xml = "";
     String line = reader.readLine();
     while (line != null) {
@@ -52,24 +53,24 @@ public class GroupCreationTest extends TestBase {
     xstream.processAnnotations(GroupData.class);
     List<GroupData> groups =(List<GroupData>) xstream.fromXML(xml);
    return groups.stream().map((g)-> new Object[] {g}).collect(Collectors.toList()).iterator();
-  }
+  }}
 
   @DataProvider
   public Iterator<Object[]> validGroupsFromJSON() throws IOException {
-    BufferedReader reader = new BufferedReader(new FileReader
-            (new File("src/test/resources/groups.json")));
-    String json = "";
-    String line = reader.readLine();
-    while (line != null) {
-      json += line;
-      line = reader.readLine();
+    try (BufferedReader reader = new BufferedReader(new FileReader
+            (new File("src/test/resources/groups.json")))) {
+      String json = "";
+      String line = reader.readLine();
+      while (line != null) {
+        json += line;
+        line = reader.readLine();
+      }
+      Gson gson = new Gson();
+      List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>() {
+      }.getType());
+      return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
-    Gson gson = new Gson();
-    List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>() {
-    }.getType());
-    return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
   }
-
  /*   list.add(new Object[] {new GroupData().withGroupname("test1").withGroupheader("header2").withGroupfooter("footer1")});
     list.add(new Object[] {new GroupData().withGroupname("test2").withGroupheader("header2").withGroupfooter("footer2")});
     list.add(new Object[] {new GroupData().withGroupname("test3").withGroupheader("header3").withGroupfooter("footer3")});*/
