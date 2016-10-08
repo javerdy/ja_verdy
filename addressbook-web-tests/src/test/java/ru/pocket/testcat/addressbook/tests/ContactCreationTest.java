@@ -3,6 +3,8 @@ package ru.pocket.testcat.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.pocket.testcat.addressbook.model.ContactData;
@@ -20,6 +22,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
+
+ // Logger logger = LoggerFactory.getLogger(ContactCreationTest.class);
 
 
   @DataProvider
@@ -79,6 +83,7 @@ public class ContactCreationTest extends TestBase {
 
   @Test(dataProvider = "readyContactsFromJSON")
   public void testContJsonCreation(ContactData contact) {
+ //   logger.info("Start test ContactCreation");
     app.contact().goToHomePage();
     Contacts before = app.contact().all();
     app.contact().createwithoutdrop(contact);
@@ -86,6 +91,8 @@ public class ContactCreationTest extends TestBase {
     Contacts after = app.contact().all();
     assertThat(after, equalTo
             (before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
+ //   logger.info("Stop test ContactCreation");
+
   }
 
 
