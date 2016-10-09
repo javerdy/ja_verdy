@@ -42,7 +42,7 @@ public class HbConnectionTest {
   public void testHbConnection() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<GroupData> result = session.createQuery("from GroupData").list();
+    List<GroupData> result = session.createQuery("From GroupData").list();
     for (GroupData group : result) {
       System.out.println(group);
     }

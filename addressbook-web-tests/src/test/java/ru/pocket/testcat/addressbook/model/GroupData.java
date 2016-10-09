@@ -15,7 +15,7 @@ public class GroupData {
 
   @XStreamOmitField
   @Id
-  @Column(name ="\"group_id")
+  @Column(name ="group_id")
   public int groupid = Integer.MAX_VALUE;
 
   @Expose
