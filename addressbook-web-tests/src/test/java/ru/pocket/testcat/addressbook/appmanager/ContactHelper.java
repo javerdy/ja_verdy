@@ -76,12 +76,6 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void deleteContact() {
-    click(By.xpath("//*[@onclick='DeleteSel()']"));
-    //click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-
-  }
-
   public void initContact() {
     click(By.linkText("add new"));
 
@@ -172,19 +166,6 @@ public class ContactHelper extends BaseHelper {
       return;
     }*/
     click(By.linkText("home"));
-  }
-
-
-  public void alertDel() {
-
-    wd.switchTo().alert().accept();
-  /*  try {
-      wd.switchTo().alert();
-      return true;
-    } // try
-    catch (Exception e) {
-      return false;
-    } // catch*/
   }
 
 
@@ -367,16 +348,41 @@ public class ContactHelper extends BaseHelper {
   public void delete(int index) {
     selectContact(index);
     deleteContact();
-    alertDel();
+
     returnToContactPage();
+
+  }
+/*  public  alertDel() {
+
+    //wd.switchTo().alert().accept();
+  try {
+    wd.switchTo().alert();
+    return true;
+  } // try
+  catch (Exception e) {
+    return false;
+  } // catch
+  }*/
+
+  public void deleteContact() {
+    //click(By.xpath("//*[@onclick='DeleteSel()']"));
+    //click(By.xpath("//input[@value='Delete']"));
+    //click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
 
   }
 
   public void delete(ContactData contact) {
-    selectContactById(contact.getId());
+    goToHomePage();
+    selectConIdDel(contact.getId());
     deleteContact();
-    alertDel();
+    wd.switchTo().alert().accept();
+    contactCache = null;
     returnToContactPage();
+  }
+
+  public void selectConIdDel(int id) {
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
   }
 
   private void selectContactById(int id) {
