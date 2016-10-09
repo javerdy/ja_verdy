@@ -3,16 +3,33 @@ package ru.pocket.testcat.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+
 
 @XStreamAlias("group")
+@Entity
+@Table(name ="group_list")
 public class GroupData {
+
   @XStreamOmitField
+  @Id
+  @Column(name ="\"group_id")
   public int groupid = Integer.MAX_VALUE;
+
   @Expose
+  @Column(name = "group_name")
   public String groupname;
+
   @Expose
+  @Column(name = "group_header")
+  @Type(type="text")
   public String groupheader;
+
   @Expose
+  @Column(name = "group_footer")
+  @Type(type="text")
   public String groupfooter;
 
   public GroupData withGroupid(int groupid) {

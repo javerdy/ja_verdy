@@ -3,26 +3,48 @@ package ru.pocket.testcat.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
-@XStreamAlias("group")
+
+
+@XStreamAlias("contacts")
+@Entity
+@Table(name ="addressbook")
 public class ContactData {
+
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+
   @Expose
+  @Column
   private String firstname;
+
   @Expose
+  @Column
   private String lastname;
 
   private String nickname;
 
   private String title;
   private String address;
+
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
   private String fax;
   private String allPhones;
