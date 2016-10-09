@@ -27,9 +27,13 @@ public class ContactData {
   @Column
   private String lastname;
 
+  @Transient
   private String nickname;
 
+  @Transient
   private String title;
+
+  @Transient
   private String address;
 
   @Expose
@@ -46,26 +50,60 @@ public class ContactData {
   @Column(name = "work")
   @Type(type = "text")
   private String workPhone;
+
+  @Transient
   private String fax;
+
+  @Transient
   private String allPhones;
+  @Transient
   @Expose
   private String email;
+  @Transient
   @Expose
   private String email2;
+  @Transient
   @Expose
   private String email3;
+
+  @Transient
   private String allEmails;
+
+  @Transient
   private String homepage;
+
+  @Transient
   private String address2;
+
+  @Transient
   private String notes;
+
+  @Transient
   private String yearbirth;
+
+  @Transient
   private String anniver;
+
   @Expose
+  @Transient
   private String newgroup;
+
+  @Transient
   private String bday;
+
+  @Transient
   private String bmonth;
+
+  @Transient
   private String aday;
+
+  @Transient
   private String amonth;
+
+  @Expose
+  @Column(name="photo")
+  @Type(type = "text")
+  private String photo;
 
   @Override
   public boolean equals(Object o) {
@@ -88,9 +126,6 @@ public class ContactData {
     return result;
   }
 
-  @Expose
-
-  private File photo;
 
   public ContactData withId(int id) {
     this.id = id;
@@ -204,7 +239,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -294,7 +329,7 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return photo;
+    return new File (photo);
   }
 
   public String getAllPhones() {
