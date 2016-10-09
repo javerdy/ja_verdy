@@ -24,25 +24,18 @@ public class ContactDbModify extends TestBase {
               (new ContactData()
                       .withFirstname("Galona").withLastname("Veerona").withHomePhone("+7900567"));
     }
-    /*app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
-      app.contact().create
-              (new ContactData()
-                      .withFirstname("Vasya").withLastname("Pupkin").withMobilePhone("+79001234567")
-                      .withGroup("test1"));
-    }*/
+
   }
 
   @Test
   public void testContactModification() {
     Contacts before = app.db().contacts();
-    ContactData modifiedContact = before.iterator().next();
+    ContactData modifyContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withFirstname("Galona").withLastname("Veerona").withHomePhone("+7900567");
     app.contact().modify(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()));
     Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before.without(modifiedContact)
-            .withAdded(modifiedContact)));
+    assertThat(after, equalTo(before.without(modifyContact).withAdded(contact)));
   }
 }
