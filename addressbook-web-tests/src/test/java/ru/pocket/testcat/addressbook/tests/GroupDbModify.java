@@ -30,8 +30,9 @@ public class GroupDbModify extends TestBase {
             .withGroupid(modifiedGroup.getGroupid()).withGroupname("test1").withGroupheader("test2").withGroupfooter("test3");
     app.goTo().groupPage();
     app.group().modify(group);
-    assertThat(app.group().getgroupCount(), equalTo(before.size())); //хеширование невыгодно, но это контроль гуи
+    assertThat(app.group().getgroupCount(), equalTo(before.size()));
     Groups after = app.db().groups();
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
+    verifyGroupListInUI();
   }
 }
