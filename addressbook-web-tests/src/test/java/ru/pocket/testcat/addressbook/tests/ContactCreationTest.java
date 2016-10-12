@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
+import ru.pocket.testcat.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -81,7 +82,7 @@ public class ContactCreationTest extends TestBase {
 
   @Test(dataProvider = "readyContactsFromJSON")
   public void testContJsonCreation(ContactData contact) {
- //   logger.info("Start test ContactCreation");
+    //   logger.info("Start test ContactCreation");
     app.contact().goToHomePage();
     Contacts before = app.contact().all();
     app.contact().createwithoutdrop(contact);
@@ -89,7 +90,7 @@ public class ContactCreationTest extends TestBase {
     Contacts after = app.contact().all();
     assertThat(after, equalTo
             (before.withAdded(contact.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt()))));
- //   logger.info("Stop test ContactCreation");
+    //   logger.info("Stop test ContactCreation");
 
   }
 

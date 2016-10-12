@@ -36,6 +36,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
     wd.findElement(By.name("photo")).sendKeys("C:\\Users\\Goblik\\Pictures\\Utenok.jpg");
+//    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("title"), contactData.getTitle());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
@@ -43,6 +44,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("fax"), contactData.getFax());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
     type(By.name("homepage"), contactData.getHomepage());
     dropdownsel(wd.findElement(By.name("bday")), contactData.getBday());
     //new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
@@ -53,13 +56,23 @@ public class ContactHelper extends BaseHelper {
     type(By.name("ayear"), contactData.getAnniver());
     type(By.name("address2"), contactData.getAddress2());
     type(By.name("notes"), contactData.getNotes());
-    if (creation) {
+/*    if (creation) {
       dropdownsel(wd.findElement(By.name("new_group")), contactData.getNewgroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }*/
+
+    if (creation) {
+       if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getGroupname());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
   }
+
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
@@ -96,6 +109,13 @@ public class ContactHelper extends BaseHelper {
     returnToContactPage();
 
   }
+  public void createfull(ContactData contactdata, boolean b) {
+    initContact();
+    fillContactForm(contactdata, true);
+    pressEnter();
+    returnToContactPage();
+
+  }
 
   public void createwithoutdrop(ContactData contactData) {
     initContact();
@@ -106,7 +126,6 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void fillContCreationForm(ContactData contactData, boolean creation) {
-
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
@@ -385,7 +404,7 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
   }
 
-  private void selectContactById(int id) {
+  public void selectContactById(int id) {
     WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
