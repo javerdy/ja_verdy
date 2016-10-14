@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.pocket.testcat.addressbook.model.ContactData;
 import ru.pocket.testcat.addressbook.model.Contacts;
+import ru.pocket.testcat.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,7 +37,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
     wd.findElement(By.name("photo")).sendKeys("C:\\Users\\Goblik\\Pictures\\Utenok.jpg");
-//    attach(By.name("photo"), contactData.getPhoto());
+   // attach(By.name("photo"), contactData.getPhoto());
     type(By.name("title"), contactData.getTitle());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
@@ -129,7 +130,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
-    attach(By.name("photo"), contactData.getPhoto());
+    wd.findElement(By.name("photo")).sendKeys("C:\\Users\\Goblik\\Pictures\\Utenok.jpg");
+ //   attach(By.name("photo"), contactData.getPhoto());
     type(By.name("title"), contactData.getTitle());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
@@ -427,5 +429,33 @@ public class ContactHelper extends BaseHelper {
     WebElement checkbox = wd.findElement(By.id("" + id));
     checkbox.findElement(By.xpath("//*[@id='maintable']//td[7]/a")).click();
   }
+  private void selectGroupToAdd(String group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group);
+  }
+  private void selContactById(int id) {
+    wd.findElement(By.xpath("//input[@id='" + id + "']")).click();
+  }
 
+  private void Add() {
+    click(By.name("add"));
+  }
+
+  public void ContactAddToGroup(ContactData contact, GroupData group) {
+    selContactById(contact.getId());
+    selectGroupToAdd(group.getGroupname());
+    Add();
+  }
+  private void selectGroup(String group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group);
+  }
+
+  private void clickRemoveFromGroup() {
+    click(By.name("remove"));
+  }
+  public void removeContactFromGroup(ContactData contact, GroupData group) {
+    selectGroup(group.getGroupname());
+    selectContactById(contact.getId());
+    clickRemoveFromGroup();
+
+  }
 }
