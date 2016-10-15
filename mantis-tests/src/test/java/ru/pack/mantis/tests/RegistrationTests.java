@@ -15,6 +15,7 @@ import static org.testng.AssertJUnit.assertTrue;
  * Created by Goblik on 15.10.2016.
  */
 public class RegistrationTests extends TestBase {
+
   @BeforeMethod
   public void startMailServer() {
     app.mail().start();

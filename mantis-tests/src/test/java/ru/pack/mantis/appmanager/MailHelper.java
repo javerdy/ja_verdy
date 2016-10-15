@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
  */
 
 public class MailHelper {
+
   private final Wiser wiser;
   public ApplicationManadger app;
 
@@ -47,7 +48,7 @@ public class MailHelper {
         e.printStackTrace();
       }
     }
-    throw new Error("Sorry, No mail");
+    throw new Error("No mail:(");
   }
 
   public void start() {
