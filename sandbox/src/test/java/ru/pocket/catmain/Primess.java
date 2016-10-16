@@ -1,14 +1,12 @@
 package ru.pocket.catmain;
 
 import org.testng.Assert;
-
 import org.testng.annotations.Test;
 
 /**
- * Created by Goblik on 18.09.2016.
+ * Created by Goblik on 16.10.2016.
  */
-public class PrimesTest {
-
+public class Primess {
   @Test
   public void testPrime(){
     Assert.assertTrue(Primes.isPrime(Integer.MAX_VALUE));
