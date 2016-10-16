@@ -18,9 +18,9 @@ buildscript{
 apply plugin: 'no.nils.wsdl2java'
 
 wsdl2java {
-    generatedWsdlDir = file("src/main/java")  // target directory for generated source coude
-    wsdlDir = file("src/main/resources") // define to support incremental build
-    wsdlsToGenerate = ['src/test/resources/geoipservice.asmx_WSDL.wsdl']
+    generatedWsdlDir = file("src\\main\\java")  // target directory for generated source coude
+    wsdlDir = file("src\\main\\resources") // define to support incremental build
+    wsdlsToGenerate = [['src\\test/resources\\geoipservice.wsdl'],]
 
 
 }
