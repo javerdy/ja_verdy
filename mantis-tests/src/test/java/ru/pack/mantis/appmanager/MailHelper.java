@@ -36,7 +36,7 @@ public class MailHelper {
     }
   }
 
-  public List<MailMessage> waitForMail(int count, long timeout) throws InterruptedException {
+  public List<MailMessage> waitForMail(int count, long timeout) {
     long start = System.currentTimeMillis();
     while (System.currentTimeMillis() < start + timeout) {
       if (wiser.getMessages().size() >= count) {
@@ -44,11 +44,11 @@ public class MailHelper {
       }
       try {
         Thread.sleep(1000);
-      }catch (InterruptedException e) {
+      } catch (InterruptedException e) {
         e.printStackTrace();
       }
     }
-    throw new Error("No mail:(");
+    throw new Error("No mail : (");
   }
 
   public void start() {
@@ -58,4 +58,21 @@ public class MailHelper {
   public void stop() {
     wiser.stop();
   }
+
+
+  public String confirmLink(String email) {
+    List<MailMessage> mailMessages = app.mail().waitForMail(2, 100000);
+    MailMessage mailMessage = mailMessages.stream().filter(m -> m.to.equals(email)).findFirst().get();
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+    return regex.getText(mailMessage.text);
+  }
+
+  public String changePasswordLink(String email) {
+    List<MailMessage> mailMessages = app.mail().waitForMail(1, 100000);
+    MailMessage mailMessage = mailMessages.stream().filter(m -> m.to.equals(email) && m.text.contains("password change")).findFirst().get();
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+    return regex.getText(mailMessage.text);
+  }
+
+
 }
