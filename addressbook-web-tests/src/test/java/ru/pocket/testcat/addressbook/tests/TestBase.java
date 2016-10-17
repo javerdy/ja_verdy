@@ -30,7 +30,7 @@ public class TestBase {
 
 
   protected static final ApplicationManadger app
-          = new ApplicationManadger(System.getProperty("browser", BrowserType.CHROME));
+          = new ApplicationManadger(System.getProperty("browser", BrowserType.FIREFOX));
 
   @BeforeSuite
   public void setUp() throws Exception {
