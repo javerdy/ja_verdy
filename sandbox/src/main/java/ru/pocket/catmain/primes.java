@@ -5,6 +5,7 @@ package ru.pocket.catmain;
  */
 public class Primes {
 
+
   public static boolean isPrime(int n) {
     for (int i = 2; i < n; i++) {
       if (n % i == 0) {
@@ -12,6 +13,7 @@ public class Primes {
       }
 
     }
+
     return true;
   }
   public static boolean isPrimeFast(int n) {
