@@ -3,7 +3,7 @@ package ru.pocket.catmain;
 /**
  * Created by Goblik on 10.09.2016.
  */
-public class primes {
+public class Primes {
 
   public static boolean isPrime(int n) {
     for (int i = 2; i < n; i++) {
