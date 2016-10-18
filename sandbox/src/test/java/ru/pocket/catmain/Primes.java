@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Goblik on 16.10.2016.
  */
-public class Primess {
+public class Primes {
   @Test
   public void testPrime(){
     Assert.assertTrue(primes.isPrime(Integer.MAX_VALUE));
