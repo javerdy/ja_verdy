@@ -13,7 +13,7 @@ public class SquareTests {
   public void testArea(){
 
     Square nsc = new Square(5);
-    Assert.assertEquals(nsc.area(),20.0);
+    Assert.assertEquals(nsc.area(),25.0);
   }
 
 }
