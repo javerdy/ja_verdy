@@ -45,13 +45,13 @@ public class ApplicationManadger {
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     if("".equals(properties.getProperty("selenium.server"))) {
-      if (browser == BrowserType.FIREFOX) {
+      if (browser.equals(BrowserType.FIREFOX)) {
         wd = new FirefoxDriver();
-      } else if (browser == BrowserType.CHROME) {
+      } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
-      } else if (browser == BrowserType.IE) {
+      } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
-      } else if (browser == BrowserType.OPERA_BLINK) {
+      } else if (browser.equals(BrowserType.OPERA_BLINK)) {
         wd = new OperaDriver();
 
       }else {
